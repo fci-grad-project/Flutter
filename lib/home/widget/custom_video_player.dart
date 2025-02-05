@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class CustomVideoPlayer extends StatefulWidget {
-  const CustomVideoPlayer({super.key});
+  final String videoUrl;  // أخذ URL الفيديو من الدرس
+
+  const CustomVideoPlayer({super.key, required this.videoUrl});
 
   @override
   State<CustomVideoPlayer> createState() => _CustomVideoPlayerState();
@@ -14,22 +16,35 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   @override
   void initState() {
     super.initState();
+    String? videoId = YoutubePlayer.convertUrlToId(widget.videoUrl);
+
+    if (videoId == null) {
+      videoId = 'dQw4w9WgXcQ'; // مثال على فيديو افتراضي
+    }
+
     _controller = YoutubePlayerController(
-      initialVideoId: YoutubePlayer.convertUrlToId(
-        'https://youtu.be/vpEwyk4bJoY?si=eJXzWfC3eXd6giGP',
-      )!,
+      initialVideoId: videoId,
       flags: const YoutubePlayerFlags(
-        autoPlay: false,
+        autoPlay: false,  // تشغيل الفيديو مباشرة عندما يتم عرضه
         mute: false,
       ),
     );
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return YoutubePlayer(
-      controller: _controller,
-      showVideoProgressIndicator: true,
+    return SizedBox(
+      height: 200,  // الحجم الكامل للفيديو
+      child: YoutubePlayer(
+        controller: _controller,
+        showVideoProgressIndicator: true,
+      ),
     );
   }
 }

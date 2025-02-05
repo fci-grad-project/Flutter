@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:graduation_project/home/screen/details_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const TeachConnect());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class TeachConnect extends StatelessWidget {
+  const TeachConnect({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       //   GlobalCupertinoLocalizations.delegate,
       // ],
       debugShowCheckedModeBanner: false,
-      home: const DetailsScreen(title: 'ahmed',),
+      home:  DetailsScreen(title: '',),
     );
   }
 }
