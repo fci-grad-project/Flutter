@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class CustomVideoPlayer extends StatefulWidget {
-  final String videoUrl;  // أخذ URL الفيديو من الدرس
+  final String videoUrl;  
 
   const CustomVideoPlayer({super.key, required this.videoUrl});
 
@@ -16,31 +16,35 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   @override
   void initState() {
     super.initState();
-    String? videoId = YoutubePlayer.convertUrlToId(widget.videoUrl);
+    _initializePlayer(widget.videoUrl);
+  }
 
-    if (videoId == null) {
-      videoId = 'dQw4w9WgXcQ'; // مثال على فيديو افتراضي
-    }
-
+  void _initializePlayer(String url) {
+    String? videoId = YoutubePlayer.convertUrlToId(url) ?? 'dQw4w9WgXcQ';
     _controller = YoutubePlayerController(
       initialVideoId: videoId,
-      flags: const YoutubePlayerFlags(
-        autoPlay: false,  // تشغيل الفيديو مباشرة عندما يتم عرضه
-        mute: false,
-      ),
+      flags: const YoutubePlayerFlags(autoPlay: false, mute: false),
     );
   }
 
   @override
+  void didUpdateWidget(covariant CustomVideoPlayer oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.videoUrl != widget.videoUrl) {
+      _controller.load(YoutubePlayer.convertUrlToId(widget.videoUrl)!);
+    }
+  }
+
+  @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,  // الحجم الكامل للفيديو
+      height: 200,
       child: YoutubePlayer(
         controller: _controller,
         showVideoProgressIndicator: true,
