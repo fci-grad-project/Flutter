@@ -28,7 +28,7 @@ class TeachConnect extends StatelessWidget {
       //   GlobalCupertinoLocalizations.delegate,
       // ],
       debugShowCheckedModeBanner: false,
-      home:  DetailsScreen(title: '',),
+      home:  DetailsScreen(title: 'Flutter Course',),
     );
   }
 }

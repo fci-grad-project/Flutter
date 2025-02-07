@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:graduation_project/core/utils/app_text_styles.dart';
 import 'package:graduation_project/view%20cours/widget/Custom_Icon_Button.dart';
@@ -11,6 +12,8 @@ class EnrollBottomSheet extends StatefulWidget {
 }
 
 class _EnrollBottomSheetState extends State<EnrollBottomSheet> {
+  bool isFavorite = false;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,12 +23,16 @@ class _EnrollBottomSheetState extends State<EnrollBottomSheet> {
       child: Row(
         children: [
           CustomIconButton(
-            onTap: () {},
+            onTap: () {
+              setState(() {
+                isFavorite = !isFavorite;
+              });
+            },
             height: 45,
             width: 45,
-            child: const Icon(
-              Icons.favorite,
-              color: Colors.red,
+            child: FaIcon(
+              FontAwesomeIcons.heartCircleCheck,
+              color: isFavorite ? Colors.red : Colors.grey,
               size: 30,
             ),
           ),

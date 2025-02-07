@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:graduation_project/core/utils/app_text_styles.dart';
+import 'package:graduation_project/view%20cours/models/lesson.dart';
 import 'package:graduation_project/view%20cours/widget/Custom_Icon_Button.dart';
 import 'package:graduation_project/view%20cours/widget/Custom_Tab_View.dart';
 import 'package:graduation_project/view%20cours/widget/Enroll_Bottom_Sheet.dart';
@@ -18,7 +19,8 @@ class DetailsScreen extends StatefulWidget {
 
 class _DetailsScreenState extends State<DetailsScreen> {
   int _selectedTag = 0;
-  String currentVideoUrl = "https://youtu.be/A5XwpzrVrrY?si=SYjBONNeCAq4xN-Q"; // الفيديو الأساسي
+  String selectedVideoUrl = "https://youtu.be/A5XwpzrVrrY"; // الفيديو الافتراضي
+  String selectedLessonTitle = "Introduction to Flutter"; // العنوان الافتراضي
 
   void changeTab(int index) {
     setState(() {
@@ -26,9 +28,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
     });
   }
 
-  void updateVideo(String newUrl) {
+  void updateVideo(String videoUrl, String lessonTitle) {
     setState(() {
-      currentVideoUrl = newUrl;
+      selectedVideoUrl = videoUrl;
+      selectedLessonTitle = lessonTitle;
     });
   }
 
@@ -48,7 +51,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   child: Stack(
                     children: [
                       Align(
-                        child: Text("Flutter Course", style: TextStyles.bold19.copyWith(color: Colors.black)),
+                        child: Text(
+                          "Flutter Course",
+                          style: TextStyles.bold19.copyWith(color: Colors.black),
+                        ),
                       ),
                       Positioned(
                         left: 0,
@@ -64,30 +70,46 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
                 const SizedBox(height: 25),
 
-                // ✅ تمرير الفيديو الحالي إلى المشغل
-                CustomVideoPlayer(videoUrl: currentVideoUrl),
-
+                // ✅ الفيديو الرئيسي الذي يتم تحديثه
+                CustomVideoPlayer(videoUrl: selectedVideoUrl),
                 const SizedBox(height: 15),
-                const Text("Flutter Novice to Ninja", style: TextStyles.bold19),
+
+                // ✅ العنوان الذي يتغير عند اختيار فيديو جديد
+                Text(
+                  selectedLessonTitle,
+                  style: TextStyles.bold19,
+                ),
                 const SizedBox(height: 3),
                 const Text("Created by DevWheels", style: TextStyles.regular13),
                 const SizedBox(height: 3),
+
                 Row(
                   children: [
                     Image.asset('assets/images/star.png', height: 20),
-                    const Text(" 4.8", style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500, fontSize: 16)),
+                    const Text(" 4.8",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                        )),
                     const SizedBox(width: 15),
                     Image.asset('assets/images/clock.png', height: 20),
-                    const Text(" 72 Hours", style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500, fontSize: 16)),
+                    const Text(" 72 Hours",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                        )),
                     const Spacer(),
-                    Text(" FREE", style: TextStyles.semiBold16.copyWith(color: Colors.red)),
+                    Text(" FREE",
+                        style: TextStyles.semiBold16.copyWith(color: Colors.red)),
                   ],
                 ),
                 const SizedBox(height: 15),
 
                 CustomTabView(index: _selectedTag, changeTab: changeTab),
 
-                // ✅ تمرير دالة `updateVideo` إلى `PlayList`
+                // ✅ تمرير دالة `updateVideo` إلى القائمة لتحديث الفيديو والعنوان
                 _selectedTag == 0 ? PlayList(updateVideo: updateVideo) : const Description(),
               ],
             ),
@@ -98,7 +120,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
           backgroundColor: Colors.white,
           enableDrag: false,
           builder: (context) {
-            return SizedBox(height: 80, child: EnrollBottomSheet(title: 'FREE'));
+            return SizedBox(
+              height: 80,
+              child: EnrollBottomSheet(title: 'FREE'),
+            );
           },
         ),
       ),
