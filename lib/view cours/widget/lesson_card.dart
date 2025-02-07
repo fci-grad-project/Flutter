@@ -44,31 +44,38 @@ class _LessonCardState extends State<LessonCard> {
         Future.delayed(const Duration(milliseconds: 100), () {
           setState(() => isPressed = false);
         });
-        widget.updateVideo(widget.lesson.videoUrl, widget.lesson.name); // تحديث الفيديو والعنوان
+        widget.updateVideo(widget.lesson.videoUrl,
+            widget.lesson.name); // تحديث الفيديو والعنوان
       },
       onTapCancel: () => setState(() => isPressed = false),
-
       child: AnimatedScale(
         scale: isPressed ? 0.96 : 1.0,
-        duration: const Duration(milliseconds: 100), 
+        duration: const Duration(milliseconds: 100),
         child: Row(
           children: [
             Container(
               width: 70,
               height: 50,
               decoration: BoxDecoration(
-                color: widget.isSelected ? Colors.blue.withOpacity(0.3) : Colors.grey.withOpacity(0.2),
+                color: widget.isSelected
+                    ? Colors.blue.withOpacity(0.3)
+                    : Colors.grey.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: const Icon(Icons.play_arrow, color: Colors.black), // رمز تشغيل الفيديو
+              child: const Icon(Icons.play_arrow,
+                  color: Colors.black), // رمز تشغيل الفيديو
             ),
             const SizedBox(width: 15),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(widget.lesson.name, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                  Text(widget.lesson.duration, style: const TextStyle(fontSize: 13, color: Colors.grey)),
+
+                  Text(widget.lesson.name,
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w500)),
+                  Text("${widget.lesson.duration ?? 'N/A'}",
+                      style: const TextStyle(fontSize: 13, color: Colors.grey)),
                 ],
               ),
             ),
