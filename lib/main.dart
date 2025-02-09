@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/Nav%20Bar%20Iteam/Bottom_Navigation_Bar.dart';
-import 'package:graduation_project/Splachscreen_Onbording/splach_view.dart';
+import 'package:graduation_project/Nav%20Bar%20Iteam/navbar.dart';
 
 void main() {
   runApp(const TeachConnect());
@@ -17,7 +17,7 @@ class TeachConnect extends StatelessWidget {
         fontFamily: 'cairo',
       ),
       debugShowCheckedModeBanner: false,
-      home: SplachScreenView(),
+      home: NavBarItem(),
     );
   }
 }
