@@ -1,10 +1,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:graduation_project/Contact%20Room/chat_view.dart';
+import 'package:graduation_project/ProfilePage/widgets/view_body_profile.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
-import 'package:line_icons/line_icons.dart';
+import 'package:graduation_project/home%20screen/view_home_screen.dart';
+import 'package:graduation_project/view%20cours/screen/details_screen.dart';
 
 class NavBarItem extends StatefulWidget {
   @override
@@ -15,22 +18,16 @@ class _NavBarItemState extends State<NavBarItem> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Likes',
-      style: optionStyle,
-    ),
+  static final List<Widget> _widgetOptions = <Widget>[
+    HomeScreen(),
+    // Text(
+    //   'Likes',
+    //   style: optionStyle,
+    // ),
+    DetailsScreenCours(title: 'Flutter Course '),
     ChatView(),
-    Text(
-      'Profile',
-      style: optionStyle,
-    ),
+    ViewProfileBody(),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +38,7 @@ class _NavBarItemState extends State<NavBarItem> {
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: const Color.fromARGB(255, 255, 255, 255),
           boxShadow: [
             BoxShadow(
               blurRadius: 20,
@@ -66,18 +63,25 @@ class _NavBarItemState extends State<NavBarItem> {
                 GButton(
                   icon: FontAwesomeIcons.home,
                   text: 'Home',
+                                    textStyle: GoogleFonts.cairo(fontSize: 16, color: Colors.white),
+
                 ),
                 GButton(
                   icon: FontAwesomeIcons.heart,
                   text: 'Likes',
+                                    textStyle: GoogleFonts.cairo(fontSize: 16, color: Colors.white),
+
                 ),
                 GButton(
                   icon: FontAwesomeIcons.headset,
-                  text: 'Contact Room',
+                  text: 'Contact Room ',
+                                    textStyle: GoogleFonts.cairo(fontSize: 16, color: Colors.white),
+
                 ),
                 GButton(
                   icon: FontAwesomeIcons.user,
                   text: 'Profile',
+                  textStyle: GoogleFonts.cairo(fontSize: 16, color: Colors.white),
                 ),
               ],
               selectedIndex: _selectedIndex,

@@ -31,6 +31,7 @@ dependencies:
   bloc: ^9.0.0
   chat_bubbles: ^1.6.0
   cupertino_icons: ^1.0.8
+  curved_navigation_bar: ^1.0.6
   dio: ^5.7.0
   flutter:
     sdk: flutter
@@ -40,6 +41,7 @@ dependencies:
   flutter_svg: ^2.0.17
   font_awesome_flutter: ^10.8.0
   get_storage: ^2.1.1
+  google_fonts: ^6.2.1
   google_nav_bar: ^5.0.7
   image_picker: ^1.1.2
   line_icons: ^2.0.3

@@ -8,15 +8,15 @@ import 'package:graduation_project/view%20cours/widget/custom_Play_List.dart';
 import 'package:graduation_project/view%20cours/widget/custom_discrbtion.dart';
 import 'package:graduation_project/view%20cours/widget/custom_video_player.dart';
 
-class DetailsScreen extends StatefulWidget {
+class DetailsScreenCours extends StatefulWidget {
   final String title;
-  const DetailsScreen({super.key, required this.title});
+  const DetailsScreenCours({super.key, required this.title});
 
   @override
-  _DetailsScreenState createState() => _DetailsScreenState();
+  _DetailsScreenCoursState createState() => _DetailsScreenCoursState();
 }
 
-class _DetailsScreenState extends State<DetailsScreen> {
+class _DetailsScreenCoursState extends State<DetailsScreenCours> {
   int _selectedTag = 0;
   String selectedVideoUrl = "https://youtu.be/A5XwpzrVrrY"; // الفيديو الافتراضي
   String selectedLessonTitle = "Introduction to Flutter"; // العنوان الافتراضي

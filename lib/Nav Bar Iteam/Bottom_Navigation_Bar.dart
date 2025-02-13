@@ -60,7 +60,7 @@ class NavigationController extends GetxController {
 
   final screens = [
     HomeScreen(),
-    DetailsScreen(title: 'Flutter Course'),
+    DetailsScreenCours(title: 'Flutter Course'),
     FavoritesScreen(),
     ChatViewBody(),
     BooksScreen(),

@@ -7,11 +7,12 @@ class SocialLoginButton extends StatelessWidget {
       {super.key,
       required this.image,
       required this.title,
-      required this.onPressed});
+      required this.onPressed, required this.color});
 
   final String image;
   final String title;
   final VoidCallback onPressed;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,7 +21,8 @@ class SocialLoginButton extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           shape: RoundedRectangleBorder(
-            side: const BorderSide(color: Color(0xFFDCDEDE), width: 1),
+            side: BorderSide(color: color, width: .8),
+
             borderRadius: BorderRadius.circular(16),
           ),
         ),

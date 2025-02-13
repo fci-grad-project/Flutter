@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:graduation_project/Login&Signup_Page/widget/forget_passoward.dart';
 import 'package:graduation_project/Contact%20Room/chat_view.dart';
@@ -20,8 +19,7 @@ class LoginBodyDetiles extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
             LogoApp(),
@@ -54,8 +52,9 @@ class LoginBodyDetiles extends StatelessWidget {
                     );
                   },
                   child: Text(
-                                  'Forgot Password?',
-                    style: TextStyles.semiBold16.copyWith(color: AppColors.primaryColor),
+                    'Forgot Password?',
+                    style: TextStyles.semiBold16
+                        .copyWith(color: AppColors.primaryColor),
                   ),
                 ),
               ],
@@ -67,14 +66,16 @@ class LoginBodyDetiles extends StatelessWidget {
             const SizedBox(
               height: 24,
             ),
-            CustomButton(text: 'Login', onPressed: () {
-                Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ChatView(),
-                      ),
-                    );
-            }),
+            CustomButton(
+                text: 'Login',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ChatView(),
+                    ),
+                  );
+                }),
             const SizedBox(
               height: 21,
             ),
@@ -88,6 +89,7 @@ class LoginBodyDetiles extends StatelessWidget {
               },
               image: 'assets/images/google_icon.svg',
               title: 'Register with Google',
+              color: Colors.red,
             ),
             const SizedBox(
               height: 16,
@@ -98,6 +100,7 @@ class LoginBodyDetiles extends StatelessWidget {
               },
               image: 'assets/images/appl_icon.svg',
               title: 'Register with Apple',
+              color: Colors.black,
             ),
             const SizedBox(
               height: 16,
@@ -108,10 +111,11 @@ class LoginBodyDetiles extends StatelessWidget {
               },
               image: 'assets/images/facebook_icon.svg',
               title: ' Register with Facebook',
+              color: Colors.blue,
             ),
           ],
         ),
       ),
     );
   }
-  }
+}
