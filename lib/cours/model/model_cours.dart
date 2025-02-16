@@ -97,7 +97,7 @@ List<ModelCourse> courses = [
     professor: "Dr Amal",
     totalTime: "20 hours",
     ratings: 4.9,
-    price: "\$59.99",
+    price: " \$ 59.99",
     courseContent: [
       CourseContent(
           title: "HTML & CSS Basics",

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 AppBar buildAppBar(context,
     {required String title,
     bool showBackButton = true,
@@ -11,7 +10,7 @@ AppBar buildAppBar(context,
       Visibility(
         visible: showNotification,
         child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: 1),
         ),
       )
     ],
@@ -30,12 +29,11 @@ AppBar buildAppBar(context,
     title: Text(
       title,
       textAlign: TextAlign.center,
-    style: TextStyle(
-    fontFamily: 'SFPro',
-    fontSize: 18,
-    fontWeight: FontWeight.bold,
-  ),
+      style: TextStyle(
+        fontFamily: 'SFPro',
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+      ),
     ),
-    
   );
 }

@@ -25,6 +25,8 @@ class LiveEventsList extends StatelessWidget {
       "date": "Feb 25, 2025",
       "time": "6:00 PM GMT"
     }
+    
+
   ];
 
   @override
@@ -71,21 +73,19 @@ class LiveEventsList extends StatelessWidget {
               ),
             ),
           ),
-                      Padding(
-                        padding: const EdgeInsets.all(9.0),
-                        child: Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Text("LIVE",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                      ),
+          Padding(
+            padding: const EdgeInsets.all(9.0),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Text("LIVE",
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold)),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(

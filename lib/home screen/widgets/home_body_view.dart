@@ -87,7 +87,7 @@ class HomeBodyView extends StatelessWidget {
                   ],
                 ),
               ),
-              CoursesPage(),
+              NewCourses(),
               SizedBox(height: 16),
               Text(
                 'Live Events',

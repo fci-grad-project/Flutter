@@ -4,7 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:graduation_project/cours/model/model_cours.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-class CoursesPage extends StatelessWidget {
+class NewCourses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
@@ -90,7 +90,6 @@ class CoursesPage extends StatelessWidget {
                           // أيقونة السعر + النص
                           Row(
                             children: [
-                              Icon(Icons.attach_money, color: Colors.red, size: 16),
                               Text(
                                 '${course.price}',
                                 style: GoogleFonts.cairo(

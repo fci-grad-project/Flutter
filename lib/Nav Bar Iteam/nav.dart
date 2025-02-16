@@ -45,9 +45,9 @@ class _NavBarItemState extends State<NavBar> {
         items: const [
           Icon(Icons.home, color: Colors.white, size: 28),
           Icon(Icons.favorite, color: Colors.white, size: 28),
-          Icon(Icons.person, color: Colors.white, size: 28),
-          Icon(Icons.settings, color: Colors.white, size: 28),
           Icon(Icons.notifications, color: Colors.white, size: 28),
+          Icon(Icons.settings, color: Colors.white, size: 28),
+          Icon(Icons.person, color: Colors.white, size: 28),
         ],
       ),
     );

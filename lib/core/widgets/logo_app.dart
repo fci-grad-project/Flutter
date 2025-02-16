@@ -7,15 +7,10 @@ class LogoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: 10
-      ),
-      child: Image.asset(
-        'assets/images/Teach Connect logo.png',
-        width: 330,  
-        height: 200,
-      ),
+    return Image.asset(
+      'assets/images/Course_Logo2.png',
+      width: 300,  
+      height: 200,
     );
   }
 }
