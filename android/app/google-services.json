@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "858034881353",
+    "project_id": "teach-connect-80785",
+    "storage_bucket": "teach-connect-80785.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858034881353:android:8079d3b6af54efe39a1098",
+        "android_client_info": {
+          "package_name": "com.example.project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb9CYoFaOI2O1pyTMJQc-WPjYfu1v52is"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
