@@ -5,6 +5,7 @@ AppBar buildAppBar(context,
     bool showBackButton = true,
     bool showNotification = true}) {
   return AppBar(
+    
     backgroundColor: Colors.white,
     actions: [
       Visibility(

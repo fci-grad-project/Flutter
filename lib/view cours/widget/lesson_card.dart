@@ -70,7 +70,6 @@ class _LessonCardState extends State<LessonCard> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   Text(widget.lesson.name,
                       style: const TextStyle(
                           fontSize: 16, fontWeight: FontWeight.w500)),
@@ -82,6 +81,12 @@ class _LessonCardState extends State<LessonCard> {
             CustomCheckBox(
               isChecked: isCheckBoxChecked,
               onChecked: (value) => setState(() => isCheckBoxChecked = value),
+              onSaved: (value) {
+                if (value != null) {
+                  widget.updateVideo(widget.lesson.videoUrl,
+                      widget.lesson.name); // تحديث الفيديو والعنوان
+                }
+              },
             ),
           ],
         ),

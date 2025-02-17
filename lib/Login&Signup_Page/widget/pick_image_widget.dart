@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:image_picker/image_picker.dart';
 
 class PickImageWidget extends StatefulWidget {
@@ -30,7 +31,7 @@ class _PickImageWidgetState extends State<PickImageWidget> {
       height: 130,
       child: _profilePic == null
           ? CircleAvatar(
-              backgroundColor: const Color(0xff0c334b),
+              backgroundColor:AppColors.primaryColor,
 // لون الخلفية
               child: Stack(
                 children: [

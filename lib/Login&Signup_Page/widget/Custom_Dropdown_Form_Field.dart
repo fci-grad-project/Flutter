@@ -40,7 +40,7 @@ class CustomDropdownButtonFormField extends StatelessWidget {
       validator: validator ??
           (value) {
             if (value == null || value.isEmpty) {
-              return 'هذا الحقل مطلوب';
+              return ' Please select a role';;
             }
             return null;
           },

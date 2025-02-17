@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:graduation_project/Login&Signup_Page/LoginView.dart';
+import 'package:graduation_project/features/services/git_it_services.dart';
 
 import 'features/firebase_options.dart';
 
@@ -12,6 +13,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  setupGitIT();
   runApp(const TeachConnect());
 }
 

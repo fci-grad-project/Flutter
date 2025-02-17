@@ -29,7 +29,6 @@ class TermsAndConditionsWidgetState extends StatelessWidget {
                 color: AppColors.lightPrimaryColor,
               ),
             ),
-      
           ],
         ),
         // textAlign: TextAlign.right,
