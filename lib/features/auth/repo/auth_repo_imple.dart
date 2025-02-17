@@ -28,4 +28,23 @@ class AuthRepoImple extends AuthRepo {
         return Left(ServerFailler(message: e.toString()));
       }
     }
+    @override
+    Future<Either<Failler, UserEntity>> signInWithEmailAndPassword(
+      String email,
+      String password,
+    ) async {
+      try {
+        final user = await firebaseAuthServices.signInWithEmailAndPassword(
+            email: email, password: password);
+        return Right(UserModel(
+          name: user.displayName ?? '',
+          email: user.email ?? '',
+          role: '',
+          password: password,
+        ));
+      } on Exception catch (e) {
+        return Left(ServerFailler(message: e.toString()));
+      }
+    }
+    
 }
