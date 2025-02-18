@@ -9,4 +9,5 @@ abstract class AuthRepo {
   Future<Either<Failler, UserEntity>> signInWithEmailAndPassword(
       String email, String password);
   Future<Either<Failler, UserEntity>> signInWithGoogle();
+  Future<Either<Failler, UserEntity>> signInWithFacebook();
 }

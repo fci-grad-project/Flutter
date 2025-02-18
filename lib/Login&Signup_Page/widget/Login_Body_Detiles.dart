@@ -103,7 +103,7 @@ class _LoginBodyDetilesState extends State<LoginBodyDetiles> {
               SocialLoginButton(
                 onPressed: () {
                   context.read<SigninCubit>().signinWithGoogle();
-                  
+
                 },
                 image: 'assets/images/google_icon.svg',
                 title: 'Register with Google',
@@ -114,7 +114,7 @@ class _LoginBodyDetilesState extends State<LoginBodyDetiles> {
               ),
               SocialLoginButton(
                 onPressed: () {
-                  // context.read<SigninCubit>().signinWithFacebook();
+                  // context.read<SigninCubit>().signinWithApple();
                 },
                 image: 'assets/images/appl_icon.svg',
                 title: 'Register with Apple',
@@ -125,7 +125,7 @@ class _LoginBodyDetilesState extends State<LoginBodyDetiles> {
               ),
               SocialLoginButton(
                 onPressed: () {
-                  // context.read<SigninCubit>().signinWithFacebook();
+                  context.read<SigninCubit>().signinWithFacebook();
                 },
                 image: 'assets/images/facebook_icon.svg',
                 title: ' Register with Facebook',
