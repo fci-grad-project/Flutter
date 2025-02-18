@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:graduation_project/Splachscreen_Onbording/onbording_view.dart';
 
 class SplachBody extends StatefulWidget {
-  const SplachBody({Key? key}) : super(key: key);
+  const SplachBody({super.key});
 
   @override
   State<SplachBody> createState() => _SplachBodyState();

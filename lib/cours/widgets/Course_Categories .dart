@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CourseCategories extends StatefulWidget {
+  const CourseCategories({super.key});
+
   @override
   _CourseCategoriesState createState() => _CourseCategoriesState();
 }

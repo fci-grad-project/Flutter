@@ -5,6 +5,8 @@ import 'package:graduation_project/home%20screen/view_home_screen.dart';
 import 'package:graduation_project/view%20cours/screen/details_screen.dart';
 
 class NavBar extends StatefulWidget {
+  const NavBar({super.key});
+
   @override
   State<NavBar> createState() => _NavBarItemState();
 }
@@ -59,7 +61,7 @@ class PlaceholderWidget extends StatelessWidget {
   final String title;
   final IconData icon;
 
-  const PlaceholderWidget(this.title, this.icon, {Key? key}) : super(key: key);
+  const PlaceholderWidget(this.title, this.icon, {super.key});
 
   @override
   Widget build(BuildContext context) {

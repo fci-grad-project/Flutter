@@ -29,6 +29,8 @@ class LiveEventsList extends StatelessWidget {
 
   ];
 
+   LiveEventsList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(

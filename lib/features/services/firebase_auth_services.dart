@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'dart:developer';
 
 class FirebaseAuthServices {
   Future<User> createUserWithEmailAndPassword(
@@ -24,25 +23,21 @@ class FirebaseAuthServices {
     }
   }
 
-  Future<User> signInWithEmailAndPassword(
-      {required String email, required String password}) async {
+  Future<User?> signInWithEmailAndPassword(
+      String email, String password) async {
     try {
       final credential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-      return credential.user!;
+      return credential.user;
     } on FirebaseAuthException catch (e) {
-      log("Exception in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()} and code is ${e.code}");
       if (e.code == 'user-not-found') {
-        throw Exception('there is no user record corresponding to this identifier. The user may have been deleted.');
+        throw Exception('No user found for that email.');
       } else if (e.code == 'wrong-password') {
-        throw Exception(' The password is invalid or the user does not have a password.');
-      } else if (e.code == 'network-request-failed') {
-        throw Exception(' An error occurred while attempting to connect to the server.');
-      } else {
-        throw Exception('An unexpected error occurred.');
+        throw Exception('Wrong password provided for that user.');
       }
+      throw Exception('An error occurred during user creation.');
     } catch (e) {
-      throw Exception('An unexpected error occurred');
-    }
-  }
+      print(e);
+      }
+}
 }

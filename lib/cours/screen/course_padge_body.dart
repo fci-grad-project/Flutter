@@ -5,6 +5,8 @@ import 'package:graduation_project/cours/model/model_cours.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class NewCourses extends StatelessWidget {
+  const NewCourses({super.key});
+
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
@@ -91,7 +93,7 @@ class NewCourses extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                '${course.price}',
+                                course.price,
                                 style: GoogleFonts.cairo(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,

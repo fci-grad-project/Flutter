@@ -6,16 +6,23 @@ import 'package:meta/meta.dart';
 part 'signin_state.dart';
 
 class SigninCubit extends Cubit<SigninState> {
-  SigninCubit(this.authRepo) : super(SigninInitial());
   final AuthRepo authRepo;
+
+  SigninCubit({required this.authRepo}) : super(SigninInitial());
+
   Future<void> signin(String email, String password) async {
     emit(SigninLoading());
-    final result = await authRepo.signInWithEmailAndPassword(
-      email,
-      password,
-      
+
+    final result = await authRepo.signInWithEmailAndPassword(email, password);
+    result.fold(
+      (failure) {
+        // عرض رسالة الخطأ للمستخدم عند الفشل
+        emit(SigninFailure(message: failure.message));
+      },
+      (userEntity) {
+        // عند النجاح، نقوم بإصدار حالة النجاح
+        emit(SigninSuccess(user: userEntity));
+      },
     );
-    result.fold((failure) => emit(SigninFailure(message: failure.message)),
-        (userEntity) => emit(SigninSuccess(user: userEntity)));
   }
 }

@@ -73,7 +73,7 @@ class _LessonCardState extends State<LessonCard> {
                   Text(widget.lesson.name,
                       style: const TextStyle(
                           fontSize: 16, fontWeight: FontWeight.w500)),
-                  Text("${widget.lesson.duration ?? 'N/A'}",
+                  Text(widget.lesson.duration ?? 'N/A',
                       style: const TextStyle(fontSize: 13, color: Colors.grey)),
                 ],
               ),

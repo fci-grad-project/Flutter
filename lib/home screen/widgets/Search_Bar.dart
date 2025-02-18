@@ -11,24 +11,24 @@ class CustomSearch extends StatelessWidget {
         return SearchBar(
           controller: controller,
           hintText: "Search...",
-          textStyle: MaterialStateProperty.all(
+          textStyle: WidgetStateProperty.all(
             const TextStyle(
               color: AppColors.primaryColor,
               fontSize: 16, // تكبير حجم الخط قليلاً
             ),
           ),
-          backgroundColor: MaterialStateProperty.all(Colors.white),
-          padding: MaterialStateProperty.all(
+          backgroundColor: WidgetStateProperty.all(Colors.white),
+          padding: WidgetStateProperty.all(
             EdgeInsets.symmetric(horizontal: 12), // إضافة بعض التباعد
           ),
-          shape: MaterialStateProperty.all(
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
               side: const BorderSide(color: AppColors.primaryColor, width: 2),
             ),
           ),
-          shadowColor: MaterialStateProperty.all(AppColors.primaryColor.withOpacity(0.2)),
-          elevation: MaterialStateProperty.all(1),
+          shadowColor: WidgetStateProperty.all(AppColors.primaryColor.withOpacity(0.2)),
+          elevation: WidgetStateProperty.all(1),
           trailing: [
             InkWell(
               onTap: () {

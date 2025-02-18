@@ -34,8 +34,8 @@ class CustomIconButton extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
-        child: Center(child: child),
         onTap: onTap,
+        child: Center(child: child),
       ),
     );
   }

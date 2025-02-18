@@ -5,7 +5,7 @@ import 'package:graduation_project/core/utils/app_text_styles.dart';
 import 'package:graduation_project/view%20cours/widget/Custom_Icon_Button.dart';
 
 class EnrollBottomSheet extends StatefulWidget {
-  EnrollBottomSheet({super.key, required this.title});
+  const EnrollBottomSheet({super.key, required this.title});
   final String title;
   @override
   _EnrollBottomSheetState createState() => _EnrollBottomSheetState();

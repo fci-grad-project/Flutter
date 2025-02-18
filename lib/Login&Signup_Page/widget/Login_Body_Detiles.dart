@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/Login&Signup_Page/widget/forget_passoward.dart';
-import 'package:graduation_project/Contact%20Room/chat_view.dart';
-import 'package:graduation_project/Nav%20Bar%20Iteam/nav.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:graduation_project/core/utils/app_text_styles.dart';
 import 'package:graduation_project/core/widgets/CustomTextFormFieldPassword.dart';
@@ -11,6 +10,7 @@ import 'package:graduation_project/Login&Signup_Page/widget/dont_have_account_wi
 import 'package:graduation_project/core/widgets/or_divider.dart';
 import 'package:graduation_project/Login&Signup_Page/widget/social_login_button.dart';
 import 'package:graduation_project/core/widgets/logo_app.dart';
+import 'package:graduation_project/features/cubits/cubit/signin_cubit.dart';
 
 class LoginBodyDetiles extends StatefulWidget {
   const LoginBodyDetiles({
@@ -82,12 +82,7 @@ class _LoginBodyDetilesState extends State<LoginBodyDetiles> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => NavBar(),
-                      ),
-                    );
+                    context.read<SigninCubit>().signin(_email!, _password!);
                   } else {
                     // Handle validation errors
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -141,4 +136,4 @@ class _LoginBodyDetilesState extends State<LoginBodyDetiles> {
       ),
     );
   }
-  }
+}
