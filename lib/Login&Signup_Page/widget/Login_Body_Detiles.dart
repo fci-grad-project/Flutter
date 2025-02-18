@@ -102,7 +102,8 @@ class _LoginBodyDetilesState extends State<LoginBodyDetiles> {
               ),
               SocialLoginButton(
                 onPressed: () {
-                  // context.read<SigninCubit>().signinWithGoogle();
+                  context.read<SigninCubit>().signinWithGoogle();
+                  
                 },
                 image: 'assets/images/google_icon.svg',
                 title: 'Register with Google',

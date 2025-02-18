@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:graduation_project/features/auth/entity/user_entity.dart';
@@ -76,5 +78,21 @@ class AuthRepoImple extends AuthRepo {
   }
 }
 
-    
-}
+  @override
+  Future<Either<Failler, UserEntity>> signInWithGoogle() async {
+    try {
+      var user = await firebaseAuthServices.signInWithGoogle();
+      return Right(UserModel(
+        name: user.displayName ?? '',
+        email: user.email ?? '',
+        role: '',
+        password: '',
+      ));
+    } on FirebaseAuthException catch (e) {
+      return Left(ServerFailler(message: e.message ?? 'An error occurred during Google sign-in'));
+    } catch (e) {
+      log('Exception in AuthRepoImpl.signInWithGoogle: ${e.toString()}');
+      return Left(ServerFailler(message: 'An unexpected error occurred. Please try again later.'));
+    }
+  }
+  }
