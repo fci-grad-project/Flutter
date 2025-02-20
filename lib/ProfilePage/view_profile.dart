@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/ProfilePage/widgets/view_body_profile.dart';
 
-class OnbordingView extends StatelessWidget {
-  const OnbordingView({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {

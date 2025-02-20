@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:graduation_project/Nav%20Bar%20Iteam/nav.dart';
+import 'package:graduation_project/core/utils/route.dart';
 import 'package:graduation_project/features/services/git_it_services.dart';
 
 import 'features/firebase_options.dart';
@@ -29,7 +30,8 @@ class TeachConnect extends StatelessWidget {
         textTheme: GoogleFonts.cairoTextTheme(), // تطبيق الخط على كل النصوص
       ),
       debugShowCheckedModeBanner: false,
-      home: NavBar(),
+       initialRoute: AppRoutes.navBar, // تحديد الصفحة الافتراضية عند تشغيل التطبيق
+      onGenerateRoute: AppRoutes.generateRoute, // تحديد الـ Routes
     );
   }
 }
