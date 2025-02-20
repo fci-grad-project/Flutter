@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 AppBar buildAppBar(context,
     {required String title,
     bool showBackButton = true,
+    Color? backgroundColor,
     bool showNotification = true}) {
   return AppBar(
     
-    backgroundColor: Colors.white,
-    actions: [
+backgroundColor: backgroundColor ?? Colors.white,    actions: [
       Visibility(
         visible: showNotification,
         child: const Padding(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
+import 'package:graduation_project/exams/exams_view.dart';
 import 'package:graduation_project/home%20screen/view_home_screen.dart';
 import 'package:graduation_project/view%20cours/screen/details_screen.dart';
 
@@ -18,7 +19,7 @@ class _NavBarItemState extends State<NavBar> {
   final List<Widget> _pages = [
     HomeScreen(),
     DetailsScreenCours(title: 'Flutter Course'),
-    PlaceholderWidget("Profile", Icons.person),
+    ExamsView(),
     PlaceholderWidget("Settings", Icons.settings),
     PlaceholderWidget("Notifications", Icons.notifications),
   ];
@@ -73,7 +74,8 @@ class PlaceholderWidget extends StatelessWidget {
           SizedBox(height: 16),
           Text(
             title,
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
+            style: TextStyle(
+                fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
           ),
         ],
       ),

@@ -32,6 +32,12 @@ class _ChatScreenState extends State<ChatScreen> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back), // أيقونة الرجوع
+          onPressed: () {
+            Navigator.of(context).pop(); // الرجوع إلى الشاشة السابقة
+          },
+        ),
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: AppColors.primaryColor,
         centerTitle: true,
@@ -61,4 +67,3 @@ class _ChatScreenState extends State<ChatScreen> with SingleTickerProviderStateM
     );
   }
 }
-
