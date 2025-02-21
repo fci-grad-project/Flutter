@@ -3,7 +3,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:graduation_project/exams/exams_view.dart';
 import 'package:graduation_project/home%20screen/view_home_screen.dart';
-import 'package:graduation_project/view%20cours/screen/details_screen.dart';
+import 'package:graduation_project/detaills%20cours/screen/details_screen.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});

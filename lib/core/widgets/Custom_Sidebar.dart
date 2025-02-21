@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/Contact%20Room/chat_view.dart';
 import 'package:graduation_project/Login&Signup_Page/LoginView.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
-import 'package:graduation_project/exams/exams_view.dart';
+import 'package:graduation_project/core/utils/route.dart';
 import 'package:graduation_project/home%20screen/widgets/Photo_User_Home.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:sidebarx/sidebarx.dart';
@@ -66,22 +65,39 @@ class CustomSidebar extends StatelessWidget {
             ),
 
             // القائمة الجانبية بالعناصر الجديدة
-            SidebarItem(icon: Iconsax.profile_circle, label: 'Profile', onTap: () {}),
+            SidebarItem(
+                icon: Iconsax.profile_circle, label: 'Profile', onTap: ()=>Navigator.pushNamed(context, AppRoutes.profilePage)),
             _buildDivider(),
 
-            SidebarItem(icon: Iconsax.message, label: 'Chats', onTap: () => _navigateTo(context, ChatView())),
+            SidebarItem(
+              icon: Iconsax.message,
+              label: 'Chats',
+              onTap: () => Navigator.pushNamed(context, AppRoutes.chatView),
+            ),
             _buildDivider(),
 
-            SidebarItem(icon: Iconsax.book, label: 'Exams', onTap: () => _navigateTo(context, ExamsView())),
+            SidebarItem(
+                icon: Iconsax.book,
+                label: 'Exams',
+                onTap: () => Navigator.pushNamed(context, AppRoutes.examsView)),
             _buildDivider(),
 
-            SidebarItem(icon: Iconsax.play_circle, label: 'Courses', onTap: () {}), // 🆕 الكورسات
+            SidebarItem(
+                icon: Iconsax.play_circle,
+                label: 'Courses',
+                onTap: () => Navigator.pushNamed(context, AppRoutes.detailsScreenCours)), // 🆕 الدورات
             _buildDivider(),
 
-            SidebarItem(icon: Iconsax.clipboard_text, label: 'Assignments', onTap: () {}), // 🆕 الواجبات
+            SidebarItem(
+                icon: Iconsax.clipboard_text,
+                label: 'Assignments',
+                onTap: () => Navigator.pushNamed(context, AppRoutes.examsView)),
             _buildDivider(),
 
-            SidebarItem(icon: Iconsax.notification, label: 'Notifications', onTap: () {}), // 🆕 الإشعارات
+            SidebarItem(
+                icon: Iconsax.notification,
+                label: 'Notifications',
+                onTap: () {}), // 🆕 الإشعارات
             _buildDivider(),
 
             SidebarItem(icon: Iconsax.setting, label: 'Settings', onTap: () {}),
@@ -89,8 +105,6 @@ class CustomSidebar extends StatelessWidget {
 
             SidebarItem(icon: Iconsax.info_circle, label: 'Help', onTap: () {}),
             _buildDivider(),
-
-
 
             SidebarItem(
               icon: Iconsax.logout,
@@ -128,49 +142,6 @@ class SidebarItem extends StatelessWidget {
   final Color? textColor;
 
   const SidebarItem({
-    super.key,
-    required this.icon,
-    required this.label,
-    required this.onTap,
-    this.iconColor,
-    this.textColor,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(8),
-      splashColor: Colors.blue.withOpacity(0.2),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
-        child: Row(
-          children: [
-            Icon(icon, color: iconColor ?? AppColors.primaryColor, size: 26),
-            SizedBox(width: 12),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-                color: textColor ?? Colors.black,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CustomSidebarItem extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final VoidCallback onTap;
-  final Color? iconColor;
-  final Color? textColor;
-
-  const CustomSidebarItem({
     super.key,
     required this.icon,
     required this.label,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/view%20cours/models/lesson.dart';
-import 'package:graduation_project/view%20cours/widget/lesson_card.dart';
+import 'package:graduation_project/detaills%20cours/models/lesson.dart';
+import 'package:graduation_project/detaills%20cours/widget/lesson_card.dart';
 
 class PlayList extends StatefulWidget {
   final Function(String, String) updateVideo;

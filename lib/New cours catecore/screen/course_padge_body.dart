@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:graduation_project/cours/model/model_cours.dart';
+import 'package:graduation_project/New%20cours%20catecore/model/model_cours.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class NewCourses extends StatelessWidget {

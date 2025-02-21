@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:graduation_project/core/utils/app_text_styles.dart';
-import 'package:graduation_project/view%20cours/widget/Custom_Icon_Button.dart';
+import 'package:graduation_project/detaills%20cours/widget/Custom_Icon_Button.dart';
 
 class EnrollBottomSheet extends StatefulWidget {
   const EnrollBottomSheet({super.key, required this.title});

@@ -12,7 +12,7 @@ class ExamsView extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back), // أيقونة الرجوع
           onPressed: () {
-            Navigator.of(context).pop(); // الرجوع إلى الشاشة السابقة
+          Navigator.pop(context); // إغلاق الصفحة الحالية
           },
         ),
         iconTheme: IconThemeData(color: Colors.white),

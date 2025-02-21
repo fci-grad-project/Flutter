@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:graduation_project/core/utils/app_text_styles.dart';
-import 'package:graduation_project/view%20cours/widget/Custom_Icon_Button.dart';
-import 'package:graduation_project/view%20cours/widget/Custom_Tab_View.dart';
-import 'package:graduation_project/view%20cours/widget/Enroll_Bottom_Sheet.dart';
-import 'package:graduation_project/view%20cours/widget/custom_Play_List.dart';
-import 'package:graduation_project/view%20cours/widget/custom_discrbtion.dart';
-import 'package:graduation_project/view%20cours/widget/custom_video_player.dart';
+import 'package:graduation_project/detaills%20cours/widget/Custom_Icon_Button.dart';
+import 'package:graduation_project/detaills%20cours/widget/Custom_Tab_View.dart';
+import 'package:graduation_project/detaills%20cours/widget/Enroll_Bottom_Sheet.dart';
+import 'package:graduation_project/detaills%20cours/widget/custom_Play_List.dart';
+import 'package:graduation_project/detaills%20cours/widget/custom_discrbtion.dart';
+import 'package:graduation_project/detaills%20cours/widget/custom_video_player.dart';
 
 class DetailsScreenCours extends StatefulWidget {
   final String title;

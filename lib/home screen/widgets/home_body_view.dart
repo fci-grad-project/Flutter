@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
+import 'package:graduation_project/core/utils/route.dart';
 import 'package:graduation_project/core/widgets/Custom_Sidebar.dart';
-import 'package:graduation_project/cours/screen/course_padge_body.dart';
-import 'package:graduation_project/cours/widgets/Course_Categories%20.dart';
+import 'package:graduation_project/New%20cours%20catecore/screen/course_padge_body.dart';
+import 'package:graduation_project/New%20cours%20catecore/widgets/Course_Categories%20.dart';
 import 'package:graduation_project/home%20screen/widgets/Live_EventsPage.dart'; // استدعاء LiveEventsList
 import 'package:graduation_project/home%20screen/widgets/Photo_User_Home.dart';
 import 'package:graduation_project/home%20screen/widgets/Search_Bar.dart';
@@ -112,7 +113,7 @@ class HomeBodyView extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        // انتقل إلى صفحة جميع الدورات
+                        Navigator.pushNamed(context, AppRoutes.newCourse);
                       },
                       child: Text(
                         'View All',

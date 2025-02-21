@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/core/widgets/custom_check_box.dart';
-import 'package:graduation_project/view%20cours/models/lesson.dart';
+import 'package:graduation_project/detaills%20cours/models/lesson.dart';
 
 class LessonCard extends StatefulWidget {
   final Lesson lesson;
