@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/instractour/model/Instructors_model.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:graduation_project/instractour/widgets/instractour_card.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class InstructorsScreen extends StatelessWidget {

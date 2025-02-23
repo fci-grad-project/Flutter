@@ -50,7 +50,7 @@ List<Instructor> instructors = [
     instructorId: 4,
     instructorNumber: "01151403671",
     instructorName: "Security",
-    instructorLogo: "https://cdn-icons-png.flaticon.com/512/610/610120.png",
+    instructorLogo: "https://cdn4.iconfinder.com/data/icons/professions-1-2/151/10-1024.png",
     instructorProfessor: "Dr. Mahmoud Elsharqawy",
     instructorDepartment: "General",
     instructorChatId: "chat_gen101",
