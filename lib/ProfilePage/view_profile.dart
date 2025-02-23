@@ -4,6 +4,8 @@ import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     bool isDarkMode = false; // Define isDarkMode variable
@@ -95,8 +97,8 @@ ListTile(
     scale: 1.0, // تصغير الـ Switch قليلاً ليبدو أنيقًا
     child: CupertinoSwitch(
       value: isDarkMode,
-      activeColor: AppColors.primaryColor,
-      trackColor: Colors.grey.shade300,
+      activeTrackColor: AppColors.primaryColor,
+      inactiveTrackColor: Colors.grey.shade300,
       onChanged: (value) {
         // تغيير المود هنا
       },

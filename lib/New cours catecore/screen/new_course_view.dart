@@ -4,6 +4,8 @@ import 'package:graduation_project/New%20cours%20catecore/model/model_cours.dart
 import 'package:graduation_project/detaills%20cours/screen/details_screen.dart'; // استيراد شاشة التفاصيل
 
 class CourseScreen extends StatelessWidget {
+  const CourseScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,7 +95,7 @@ class CourseScreen extends StatelessWidget {
                                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white),
                               ),
                               Text(
-                                '${course.price}',
+                                course.price,
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,

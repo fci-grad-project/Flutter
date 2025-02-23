@@ -87,18 +87,6 @@ class ChatController extends ChangeNotifier {
   }
 
   // إرسال الرسائل المعلقة عند إعادة الاتصال بالخادم
-  void _sendPendingMessages() {
-    for (var pendingMessage in _pendingMessages) {
-      final data = {
-        'message': pendingMessage.message,
-        'senderId': currentUserId,
-        'receiverId': pendingMessage.receiverId,
-      };
-      socket.emit('send_message', data); // إرسال الرسالة إلى الخادم
-    }
-    // بعد إرسال جميع الرسائل المعلقة، امسح قائمة الرسائل المعلقة
-    _pendingMessages.clear();
-  }
 
   void _scrollToBottom() {
     Future.delayed(Duration(milliseconds: 300), () {

@@ -65,9 +65,7 @@ class CustomSidebar extends StatelessWidget {
             ),
 
             // القائمة الجانبية بالعناصر الجديدة
-            SidebarItem(
-                icon: Iconsax.profile_circle, label: 'Profile', onTap: ()=>Navigator.pushNamed(context, AppRoutes.profilePage)),
-            _buildDivider(),
+
 
             SidebarItem(
               icon: Iconsax.message,
@@ -85,7 +83,15 @@ class CustomSidebar extends StatelessWidget {
             SidebarItem(
                 icon: Iconsax.play_circle,
                 label: 'Courses',
-                onTap: () => Navigator.pushNamed(context, AppRoutes.detailsScreenCours)), // 🆕 الدورات
+                onTap: () => Navigator.pushNamed(
+                    context, AppRoutes.detailsScreenCours)), // 🆕 الدورات
+            _buildDivider(),
+
+            SidebarItem(
+                icon: Iconsax.user,
+                label: 'instructor',
+                onTap: () =>
+                    Navigator.pushNamed(context, AppRoutes.instractour)),
             _buildDivider(),
 
             SidebarItem(
@@ -94,11 +100,6 @@ class CustomSidebar extends StatelessWidget {
                 onTap: () => Navigator.pushNamed(context, AppRoutes.examsView)),
             _buildDivider(),
 
-            SidebarItem(
-                icon: Iconsax.notification,
-                label: 'Notifications',
-                onTap: () {}), // 🆕 الإشعارات
-            _buildDivider(),
 
             SidebarItem(icon: Iconsax.setting, label: 'Settings', onTap: () {}),
             _buildDivider(),
