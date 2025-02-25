@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:graduation_project/ProfilePage/view_profile.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:graduation_project/exams/exams_view.dart';
 import 'package:graduation_project/home%20screen/view_home_screen.dart';
@@ -13,15 +14,13 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarItemState extends State<NavBar> {
-  int _currentIndex = 0; // الصفحة الافتراضية هي الصفحة الرئيسية
+  int _currentIndex = 0; // ✅ تأكد أن هذا لا يتجاوز عدد العناصر
 
-  // قائمة الصفحات
   final List<Widget> _pages = [
     HomeScreen(),
     DetailsScreenCours(title: 'Flutter Course'),
     ExamsView(),
-    PlaceholderWidget("Settings", Icons.settings),
-    PlaceholderWidget("Notifications", Icons.notifications),
+    ProfilePage(),
   ];
 
   @override
@@ -39,44 +38,19 @@ class _NavBarItemState extends State<NavBar> {
         animationCurve: Curves.easeInOut,
         animationDuration: const Duration(milliseconds: 300),
         height: 60,
-        index: _currentIndex,
+        index: _currentIndex, // ✅ تأكد أنه داخل النطاق الصحيح
         onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
+          if (index >= 0 && index < _pages.length) { // ✅ التحقق قبل التغيير
+            setState(() {
+              _currentIndex = index;
+            });
+          }
         },
         items: const [
           Icon(Icons.home, color: Colors.white, size: 28),
           Icon(Icons.favorite, color: Colors.white, size: 28),
           Icon(Icons.notifications, color: Colors.white, size: 28),
-          Icon(Icons.settings, color: Colors.white, size: 28),
           Icon(Icons.person, color: Colors.white, size: 28),
-        ],
-      ),
-    );
-  }
-}
-
-// ودجت بديلة للصفحات غير الموجودة حاليًا
-class PlaceholderWidget extends StatelessWidget {
-  final String title;
-  final IconData icon;
-
-  const PlaceholderWidget(this.title, this.icon, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 80, color: AppColors.primaryColor),
-          SizedBox(height: 16),
-          Text(
-            title,
-            style: TextStyle(
-                fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
-          ),
         ],
       ),
     );

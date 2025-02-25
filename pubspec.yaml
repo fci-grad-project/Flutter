@@ -50,6 +50,7 @@ dependencies:
   flutter_islamic_icons: ^1.0.2
   flutter_localizations:
     sdk: flutter
+  flutter_rating_bar: ^4.0.1
   flutter_secure_storage: ^9.2.4
   flutter_svg: ^2.0.17
   font_awesome_flutter: ^10.8.0

@@ -10,15 +10,17 @@ class NewCourses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
+      
       items: courses.map((course) {
         return GestureDetector(
           onTap: () {
             // عند الضغط على الكارد، يمكن فتح صفحة التفاصيل هنا
           },
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(25),
+
+            borderRadius: BorderRadius.circular(20),
             child: Stack(
-              alignment: Alignment.bottomLeft,
+              alignment: Alignment.bottomCenter,
               children: [
                 // ========== صورة الكورس ==========
                 Hero(
@@ -131,11 +133,12 @@ class NewCourses extends StatelessWidget {
       }).toList(),
       options: CarouselOptions(
         height: 200,
-        autoPlay: true,
+        autoPlay: false,
         enlargeCenterPage: true,
         enableInfiniteScroll: true,
-        autoPlayInterval: Duration(seconds: 3),
+        autoPlayInterval: Duration(seconds: 1),
         viewportFraction: 0.8,
+        
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/All%20courses/screen/view_all_courses.dart';
 import 'package:graduation_project/Contact%20Room/chat_view.dart';
 import 'package:graduation_project/Login&Signup_Page/LoginView.dart';
 import 'package:graduation_project/Login&Signup_Page/SignUpView.dart';
@@ -26,6 +27,7 @@ class AppRoutes {
   static const String profilePage = '/ProfilePage';
   static const String newCourse = '/CourseScreen';
   static const String instractour = '/InstructorsScreen';
+  static const String coursesall = '/CoursesAll';
 
 
   // دالة تقوم بإرجاع الشاشة المطلوبة بناءً على المسار
@@ -56,6 +58,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => CourseScreen());
         case instractour:
         return MaterialPageRoute(builder: (_) => InstructorsScreen());
+        case coursesall:
+        return MaterialPageRoute(builder: (_) => CoursesAll());
 
       default:
         return MaterialPageRoute(

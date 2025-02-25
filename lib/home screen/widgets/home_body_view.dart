@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:graduation_project/All%20courses/widget/cusome_Hero_Section.dart';
 import 'package:graduation_project/New%20cours%20catecore/screen/course_padge_body.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:graduation_project/core/utils/route.dart';
@@ -14,7 +15,8 @@ import 'package:sidebarx/sidebarx.dart';
 class HomeBodyView extends StatelessWidget {
   HomeBodyView({super.key});
 
-  final SidebarXController _sidebarController = SidebarXController(selectedIndex: 0);
+  final SidebarXController _sidebarController =
+      SidebarXController(selectedIndex: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class HomeBodyView extends StatelessWidget {
         slivers: [
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16 , vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -37,16 +39,23 @@ class HomeBodyView extends StatelessWidget {
                     children: [
                       Builder(
                         builder: (context) => IconButton(
-                          icon: Icon(Icons.menu, color: AppColors.primaryColor, size: 30),
+                          icon: Icon(Icons.menu,
+                              color: AppColors.primaryColor, size: 30),
                           onPressed: () => Scaffold.of(context).openDrawer(),
                         ),
                       ),
                       RichText(
                         text: TextSpan(
-                          style: GoogleFonts.cairo(fontSize: 25, fontWeight: FontWeight.bold),
+                          style: GoogleFonts.cairo(
+                              fontSize: 25, fontWeight: FontWeight.bold),
                           children: [
-                            TextSpan(text: "Hi, ", style: TextStyle(color: Colors.black)),
-                            TextSpan(text: "Ahmed", style: TextStyle(color: AppColors.primaryColor)),
+                            TextSpan(
+                                text: "Hi, ",
+                                style: TextStyle(color: Colors.black)),
+                            TextSpan(
+                                text: "Ahmed",
+                                style:
+                                    TextStyle(color: AppColors.primaryColor)),
                           ],
                         ),
                       ),
@@ -68,42 +77,49 @@ class HomeBodyView extends StatelessWidget {
                       ),
                     ],
                   ),
-      
-                  const SizedBox(height: 2),
                   CustomSearch(),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 5),
+                  HeroSection(),
+                  const SizedBox(height: 5),
                   Text(
                     'Courses Categories',
-                    style: GoogleFonts.cairo(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+                    style: GoogleFonts.cairo(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 12),
                   CourseCategories(),
-      
+
                   const SizedBox(height: 10),
                   _buildSectionHeader(
                     context,
                     title: "The New Courses",
-                    onViewAll: () => Navigator.pushNamed(context, AppRoutes.newCourse),
+                    onViewAll: () =>
+                        Navigator.pushNamed(context, AppRoutes.newCourse),
                   ),
                   const SizedBox(height: 8),
                   NewCourses(),
-      
+
                   const SizedBox(height: 8),
                   _buildSectionHeader(
                     context,
                     title: "Instructors",
-                    onViewAll: () => Navigator.pushNamed(context, AppRoutes.instractour),
+                    onViewAll: () =>
+                        Navigator.pushNamed(context, AppRoutes.instractour),
                   ),
                   const SizedBox(height: 8),
                   InstructorsList(),
                   const SizedBox(height: 12),
                   Text(
                     'Live Events',
-                    style: GoogleFonts.cairo(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+                    style: GoogleFonts.cairo(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 12),
                   LiveEventsList(),
-      
                 ],
               ),
             ),
@@ -114,19 +130,24 @@ class HomeBodyView extends StatelessWidget {
   }
 
   /// **📌 مكون لإنشاء عنوان الأقسام مع زر "View All"**
-  Widget _buildSectionHeader(BuildContext context, {required String title, required VoidCallback onViewAll}) {
+  Widget _buildSectionHeader(BuildContext context,
+      {required String title, required VoidCallback onViewAll}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           title,
-          style: GoogleFonts.cairo(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+          style: GoogleFonts.cairo(
+              color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
         ),
         TextButton(
           onPressed: onViewAll,
           child: Text(
             'View All',
-            style: GoogleFonts.cairo(fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.primaryColor),
+            style: GoogleFonts.cairo(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: AppColors.primaryColor),
           ),
         ),
       ],

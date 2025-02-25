@@ -111,7 +111,7 @@ ListTile(
             _buildOptionItem(Iconsax.global, "Language Preferences"),
             Divider(color: Colors.grey, thickness: 1),
             _buildOptionItem(Iconsax.logout, "Logout"),
-            SizedBox(height: 100),
+            SizedBox(height: 50),
             SizedBox(
               width: double.infinity,
               height: 54,

@@ -80,7 +80,7 @@ class CustomSidebar extends StatelessWidget {
             SidebarItem(
               icon: Iconsax.play_circle,
               label: 'Courses',
-              onTap: () => Navigator.pushNamed(context, AppRoutes.detailsScreenCours),
+              onTap: () => Navigator.pushNamed(context, AppRoutes.coursesall),
             ),
             _buildDivider(),
             SidebarItem(
