@@ -19,14 +19,14 @@ class HomeBodyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       drawer: Drawer(child: CustomSidebar(controller: _sidebarController)),
 
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 16 , vertical: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -68,7 +68,7 @@ class HomeBodyView extends StatelessWidget {
                       ),
                     ],
                   ),
-
+      
                   const SizedBox(height: 2),
                   CustomSearch(),
                   const SizedBox(height: 10),
@@ -78,7 +78,7 @@ class HomeBodyView extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   CourseCategories(),
-
+      
                   const SizedBox(height: 10),
                   _buildSectionHeader(
                     context,
@@ -87,7 +87,7 @@ class HomeBodyView extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   NewCourses(),
-
+      
                   const SizedBox(height: 8),
                   _buildSectionHeader(
                     context,
@@ -103,7 +103,7 @@ class HomeBodyView extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   LiveEventsList(),
-
+      
                 ],
               ),
             ),

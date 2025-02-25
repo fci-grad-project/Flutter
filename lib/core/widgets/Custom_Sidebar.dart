@@ -27,14 +27,15 @@ class CustomSidebar extends StatelessWidget {
             ),
           ],
         ),
-        padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
           children: [
-            // صورة المستخدم واسم المستخدم
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+            Container(
+              width: double.infinity,
+              color: AppColors.primaryColor,
+              padding: EdgeInsets.only(top: 25, bottom: 15),
               child: Column(
                 children: [
+                  SizedBox(height: 20),
                   Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
@@ -51,62 +52,53 @@ class CustomSidebar extends StatelessWidget {
                       child: PhotoUserHome(),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 5),
                   Text(
-                    'Ahmed Elashry', // اسم المستخدم
+                    'Ahmed Elashry',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
                   ),
                 ],
               ),
             ),
-
-            // القائمة الجانبية بالعناصر الجديدة
-
-
+            SizedBox(height: 5),
             SidebarItem(
               icon: Iconsax.message,
               label: 'Chats',
               onTap: () => Navigator.pushNamed(context, AppRoutes.chatView),
             ),
             _buildDivider(),
-
             SidebarItem(
-                icon: Iconsax.book,
-                label: 'Exams',
-                onTap: () => Navigator.pushNamed(context, AppRoutes.examsView)),
+              icon: Iconsax.book,
+              label: 'Exams',
+              onTap: () => Navigator.pushNamed(context, AppRoutes.examsView),
+            ),
             _buildDivider(),
-
             SidebarItem(
-                icon: Iconsax.play_circle,
-                label: 'Courses',
-                onTap: () => Navigator.pushNamed(
-                    context, AppRoutes.detailsScreenCours)), // 🆕 الدورات
+              icon: Iconsax.play_circle,
+              label: 'Courses',
+              onTap: () => Navigator.pushNamed(context, AppRoutes.detailsScreenCours),
+            ),
             _buildDivider(),
-
             SidebarItem(
-                icon: Iconsax.user,
-                label: 'instructor',
-                onTap: () =>
-                    Navigator.pushNamed(context, AppRoutes.instractour)),
+              icon: Iconsax.user,
+              label: 'instructor',
+              onTap: () => Navigator.pushNamed(context, AppRoutes.instractour),
+            ),
             _buildDivider(),
-
             SidebarItem(
-                icon: Iconsax.clipboard_text,
-                label: 'Assignments',
-                onTap: () => Navigator.pushNamed(context, AppRoutes.examsView)),
+              icon: Iconsax.clipboard_text,
+              label: 'Assignments',
+              onTap: () => Navigator.pushNamed(context, AppRoutes.examsView),
+            ),
             _buildDivider(),
-
-
             SidebarItem(icon: Iconsax.setting, label: 'Settings', onTap: () {}),
             _buildDivider(),
-
             SidebarItem(icon: Iconsax.info_circle, label: 'Help', onTap: () {}),
             _buildDivider(),
-
             SidebarItem(
               icon: Iconsax.logout,
               label: 'Logout',

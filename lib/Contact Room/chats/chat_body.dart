@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/Contact%20Room/model/message_model.dart';
 import 'package:graduation_project/Contact%20Room/widget/Chat_Input.dart';
 import 'package:graduation_project/Contact%20Room/widget/bubble_chat.dart';
 import 'package:graduation_project/Contact%20Room/chats/chat_controller.dart';
 import 'package:provider/provider.dart';
 
 class ChatBody extends StatelessWidget {
-  final String currentUserId; // ✅ معرف المستخدم الحالي
-  final String receiverId;    // ✅ معرف المستقبل
+  final String currentUserId;
+  final String receiverId;
 
   const ChatBody({
     super.key,
@@ -19,31 +20,28 @@ class ChatBody extends StatelessWidget {
     return SafeArea(
       child: Consumer<ChatController>(
         builder: (context, chatController, child) {
-          return Stack( // ✅ استخدام Stack لوضع الصورة في الخلف
+          final messages = chatController.getMessagesForUser(receiverId);
+
+          return Stack(
             children: [
-            Positioned(
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0, // ✅ تمديد الصورة للأسفل بمقدار 100 بكسل
+              Positioned.fill(
                 child: Image.asset(
                   'assets/images/background chat.jpeg',
                   fit: BoxFit.cover,
                 ),
               ),
-
-              // ✅ محتوى الدردشة فوق الخلفية
               Column(
                 children: [
                   Expanded(
                     child: ListView.builder(
                       controller: chatController.scrollController,
-                      itemCount: chatController.messages.length,
+                      physics: BouncingScrollPhysics(),
+                      itemCount: messages.length,
                       itemBuilder: (context, index) {
-                        final message = chatController.messages[index];
+                        final message = messages[index];
                         bool isCurrentUser = message.senderId == currentUserId;
                         return ChatBubble(
-                          message: message.message,
+                          message: message.messageText ?? "",
                           isCurrentUser: isCurrentUser,
                         );
                       },
@@ -57,9 +55,10 @@ class ChatBody extends StatelessWidget {
                       receiverId: receiverId,
                       onSend: (String message, String senderId, String receiverId) {
                         chatController.sendMessage(
-                          message: message,
-                          senderId: senderId,
+                          messageText: message,
                           receiverId: receiverId,
+                          receiverName: contacts.firstWhere((c) => c.messageId.toString() == receiverId).messageName,
+                          receiverLogo: contacts.firstWhere((c) => c.messageId.toString() == receiverId).messageLogo,
                         );
                       },
                     ),

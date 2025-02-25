@@ -4,81 +4,76 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class ChatController extends ChangeNotifier {
   late IO.Socket socket;
-  final List<Messages> _messages = [];
-  final List<Messages> _pendingMessages = []; // لتخزين الرسائل غير المرسلة مؤقتًا
+  final Map<String, List<Message>> _messages = {}; // ✅ تخزين الرسائل لكل مستخدم
+  final List<Message> _pendingMessages = [];
   final TextEditingController messageController = TextEditingController();
   final ScrollController scrollController = ScrollController();
 
-  final String currentUserId = 'user123'; // معرف المستخدم الحالي
-  List<Messages> get messages => _messages;
+  final String currentUserId = 'user123';
+
+  List<Message> getMessagesForUser(String receiverId) {
+    return _messages[receiverId] ?? [];
+  }
 
   ChatController() {
     _connectToSocket();
   }
 
   void _connectToSocket() {
-  try {
-    socket = IO.io('http://10.0.2.2:3000', <String, dynamic>{
-  'transports': ['websocket'],
-  'autoConnect': true,
-});
+    try {
+      socket = IO.io('http://10.0.2.2:3000', <String, dynamic>{
+        'transports': ['websocket'],
+        'autoConnect': true,
+      });
 
+      socket.onConnect((_) {
+        print('Connected to Socket.IO server');
+        _sendPendingMessages();
+      });
 
-    socket.onConnect((_) {
-      print('Connected to Socket.IO server');
-    });
+      socket.on('receive_message', (data) {
+        final message = Message.fromJson(data);
+        _messages.putIfAbsent(message.receiverId!, () => []).add(message);
+        notifyListeners();
+        _scrollToBottom();
+      });
 
-    socket.on('receive_message', (data) {
-      _messages.add(Messages(
-        message: data['message'],
-        senderId: data['senderId'],
-        receiverId: data['receiverId'],
-      ));
-      notifyListeners();
-      _scrollToBottom();
-    });
+      socket.onDisconnect((_) {
+        print('Disconnected from server');
+      });
 
-    socket.onDisconnect((_) {
-      print('Disconnected from server');
-    });
-
-    socket.onError((error) {
-      print('Error connecting to server: $error');
-      // التعامل مع الخطأ أو عرض رسالة للمستخدم
-    });
-  } catch (e) {
-    print('Exception: $e');
-    // معالجة استثناءات أخرى مثل عدم القدرة على الاتصال
+      socket.onError((error) {
+        print('Error connecting to server: $error');
+      });
+    } catch (e) {
+      print('Exception: $e');
+    }
   }
-}
 
-
-  void sendMessage({required String message, required String receiverId, required String senderId}) {
-    if (message.isNotEmpty) {
-      final data = {
-        'message': message,
-        'senderId': currentUserId,
-        'receiverId': receiverId,
-      };
-
-      // إذا كان الخادم متصلًا، أرسل الرسالة مباشرةً
-      if (socket.connected) {
-        socket.emit('send_message', data);
-      } else {
-        // إذا لم يكن الخادم متصلًا، خزّن الرسالة في قائمة الرسائل المعلقة
-        _pendingMessages.add(Messages(
-          message: message,
-          senderId: currentUserId,
-          receiverId: receiverId,
-        ));
-      }
-
-      // إضافة الرسالة إلى قائمة الرسائل المحلية
-      _messages.add(Messages(
-        message: message,
+  void sendMessage({
+    required String messageText,
+    required String receiverId,
+    required String receiverName,
+    required String receiverLogo,
+  }) {
+    if (messageText.isNotEmpty) {
+      final newMessage = Message(
+        messageId: DateTime.now().millisecondsSinceEpoch,
+        messageNumber: "",
+        messageLogo: receiverLogo,
+        messageName: receiverName,
+        messageText: messageText,
         senderId: currentUserId,
         receiverId: receiverId,
-      ));
+      );
+
+      _messages.putIfAbsent(receiverId, () => []).add(newMessage);
+
+      if (socket.connected) {
+        socket.emit('send_message', newMessage.toJson());
+      } else {
+        _pendingMessages.add(newMessage);
+      }
 
       messageController.clear();
       notifyListeners();
@@ -86,15 +81,24 @@ class ChatController extends ChangeNotifier {
     }
   }
 
-  // إرسال الرسائل المعلقة عند إعادة الاتصال بالخادم
+  void _sendPendingMessages() {
+    if (_pendingMessages.isNotEmpty) {
+      for (var msg in _pendingMessages) {
+        socket.emit('send_message', msg.toJson());
+      }
+      _pendingMessages.clear();
+    }
+  }
 
   void _scrollToBottom() {
     Future.delayed(Duration(milliseconds: 300), () {
-      scrollController.animateTo(
-        scrollController.position.maxScrollExtent,
-        duration: Duration(milliseconds: 300),
-        curve: Curves.easeOut,
-      );
+      if (scrollController.hasClients) {
+        scrollController.animateTo(
+          scrollController.position.maxScrollExtent,
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeOut,
+        );
+      }
     });
   }
 

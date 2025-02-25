@@ -5,6 +5,7 @@ import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:graduation_project/instractour/model/Instructors_model.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:graduation_project/Contact%20Room/chats/chat_details.dart'; // ✅ استيراد صفحة الدردشة
 
 class InstructorCard extends StatelessWidget {
   final Instructor instructor;
@@ -32,7 +33,6 @@ class InstructorCard extends StatelessWidget {
               child: CachedNetworkImage(
                 imageUrl: instructor.instructorLogo,
                 height: 120,
-                // width: double.infinity,
                 fit: BoxFit.cover,
                 placeholder: (context, url) => Shimmer.fromColors(
                   baseColor: Colors.grey[300]!,
@@ -87,8 +87,33 @@ class InstructorCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildIconButton(Iconsax.message, "Chat"),
-                _buildIconButton(Icons.school, "Courses"),
+                _buildIconButton(
+                  icon: Iconsax.message,
+                  label: "Chat",
+                  onTap: () {
+                    // ✅ عند الضغط على الشات، انتقل إلى صفحة المحادثة
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChatDetails(
+                          userName: instructor.instructorProfessor,
+                          userIcon: instructor.instructorLogo,
+                          currentUserId:
+                              "user_id_here", // ✅ يجب استبداله بمعرف المستخدم الحالي
+                          receiverId: instructor.instructorId
+                              .toString(), // ✅ معرف الدكتور
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                _buildIconButton(
+                  icon: Icons.school,
+                  label: "Courses",
+                  onTap: () {
+                    // ✅ يمكنك لاحقًا ربط هذا القسم بشاشة الدورات
+                  },
+                ),
               ],
             ),
           ),
@@ -97,14 +122,20 @@ class InstructorCard extends StatelessWidget {
     );
   }
 
-  Widget _buildIconButton(IconData icon, String label) {
-    return Column(
-      children: [
-        Icon(icon, color: Colors.white, size: 26),
-        const SizedBox(height: 4),
-        Text(label,
-            style: GoogleFonts.cairo(fontSize: 12, color: Colors.white)),
-      ],
+  Widget _buildIconButton(
+      {required IconData icon,
+      required String label,
+      required VoidCallback onTap}) {
+    return GestureDetector(
+      onTap: onTap, // ✅ ربط كل زر بالوظيفة الخاصة به
+      child: Column(
+        children: [
+          Icon(icon, color: Colors.white, size: 26),
+          const SizedBox(height: 4),
+          Text(label,
+              style: GoogleFonts.cairo(fontSize: 12, color: Colors.white)),
+        ],
+      ),
     );
   }
 }

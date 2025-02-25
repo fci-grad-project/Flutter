@@ -15,19 +15,19 @@ class InstructorsList extends StatelessWidget {
         itemBuilder: (context, index) {
           final instructor = instructors[index];
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            padding: const EdgeInsets.symmetric(horizontal:10),
             child: Column(
               children: [
                 // 🖼️ الصورة (فوق الاسم)
                 Container(
-                  width: 85,
-                  height: 90,
+                  width: 80,
+                  height: 80,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        blurRadius: 4,
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 1,
                         spreadRadius: 1,
                       ),
                     ],
