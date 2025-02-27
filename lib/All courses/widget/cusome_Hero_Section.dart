@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:graduation_project/core/utils/route.dart';
 
 class HeroSection extends StatelessWidget {
   final List<String> images = [
@@ -17,7 +18,7 @@ class HeroSection extends StatelessWidget {
         children: [
           _buildImageSlider(),
           _buildGradientOverlay(),
-          _buildHeroText(),
+          _buildHeroText(context),
         ],
       ),
     );
@@ -64,7 +65,7 @@ class HeroSection extends StatelessWidget {
   }
 
   /// **🔹 النصوص داخل الـ Hero Section**
-  Widget _buildHeroText() {
+  Widget _buildHeroText(BuildContext context) {
     return Positioned(
       left: 15,
       right: 15,
@@ -76,7 +77,7 @@ class HeroSection extends StatelessWidget {
           SizedBox(height: 6), // ✅ تقليل التباعد بين النصوص
           _buildSubtitleText(),
           SizedBox(height: 10),
-          _buildStartButton(),
+          _buildStartButton(context),
         ],
       ),
     );
@@ -111,14 +112,16 @@ class HeroSection extends StatelessWidget {
     );
   }
 
-  Widget _buildStartButton() {
+  Widget _buildStartButton(BuildContext context) {
     return ElevatedButton.icon(
-      onPressed: () {},
-      icon: Icon(Icons.play_arrow, size: 18), // ✅ تصغير أيقونة الزر
-      label: Text('Start Now', style: TextStyle(color: Colors.black, fontSize: 14)), // ✅ تقليل حجم النص داخل الزر
+      onPressed: () {
+        Navigator.pushNamed(context, AppRoutes.coursesall);
+      },
+      icon: Icon(Icons.play_arrow, size: 18),
+      label: Text('Start Now', style: TextStyle(color: Colors.black, fontSize: 14)),
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.white,
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8), // ✅ تصغير الزر ليكون متناسقًا مع الحجم الجديد
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),

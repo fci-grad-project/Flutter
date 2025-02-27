@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:graduation_project/exams/model/exam_model.dart';
@@ -72,12 +73,12 @@ class _ExamsPageState extends State<ExamsPage> {
                   child: ListTile(
                     leading: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: Image.network(
-                        item.logo,
+                      child: CachedNetworkImage(
+                        imageUrl: item.logo,
                         width: 50,
                         height: 50,
                         fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) => Icon(
+                        errorWidget: (context, url, error) => Icon(
                             Icons.image_not_supported,
                             size: 50,
                             color: Colors.grey),
@@ -104,7 +105,6 @@ class _ExamsPageState extends State<ExamsPage> {
       ),
     );
   }
-
   void _openExamLink(String url) async {
     if (await canLaunch(url)) {
       await launch(url);

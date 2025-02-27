@@ -8,6 +8,7 @@ import 'package:graduation_project/New%20cours%20catecore/screen/new_course_view
 import 'package:graduation_project/ProfilePage/view_profile.dart';
 import 'package:graduation_project/Splachscreen_Onbording/onbording_view.dart';
 import 'package:graduation_project/Splachscreen_Onbording/splach_view.dart';
+import 'package:graduation_project/AddTasksScreen/screen/tasks_screen.dart';
 import 'package:graduation_project/exams/exams_view.dart';
 import 'package:graduation_project/home%20screen/view_home_screen.dart';
 import 'package:graduation_project/detaills%20cours/screen/details_screen.dart';
@@ -28,6 +29,7 @@ class AppRoutes {
   static const String newCourse = '/CourseScreen';
   static const String instractour = '/InstructorsScreen';
   static const String coursesall = '/CoursesAll';
+  static const String tasksScreen = '/TasksScreen';
 
 
   // دالة تقوم بإرجاع الشاشة المطلوبة بناءً على المسار
@@ -60,6 +62,9 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => InstructorsScreen());
         case coursesall:
         return MaterialPageRoute(builder: (_) => CoursesAll());
+        case tasksScreen:
+        return MaterialPageRoute(builder: (_) => TasksScreen());
+        
 
       default:
         return MaterialPageRoute(

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:graduation_project/Contact%20Room/chats/chat_body.dart';
@@ -28,7 +29,7 @@ class ChatDetails extends StatelessWidget {
             Row(
               children: [
                 CircleAvatar(
-                  backgroundImage: NetworkImage(userIcon),
+                  backgroundImage: CachedNetworkImageProvider(userIcon),
                 ),
                 SizedBox(width: 5),
                 Flexible(

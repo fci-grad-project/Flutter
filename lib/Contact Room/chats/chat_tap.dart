@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project/Contact%20Room/chats/chat_details.dart';
 import 'package:graduation_project/Contact%20Room/model/message_model.dart';
@@ -18,7 +19,7 @@ class ChatsTab extends StatelessWidget {
           children: [
             ListTile(
               leading: CircleAvatar(
-                backgroundImage: NetworkImage(contact.messageLogo), // ✅ صورة المستخدم
+                backgroundImage:CachedNetworkImageProvider(contact.messageLogo), // ✅ صورة المستخدم
               ),
               title: Text(
                 contact.messageName, // ✅ اسم المستخدم

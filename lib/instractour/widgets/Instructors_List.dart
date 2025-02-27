@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:graduation_project/instractour/model/Instructors_model.dart';
@@ -33,8 +34,8 @@ class InstructorsList extends StatelessWidget {
                     ],
                   ),
                   child: ClipOval(
-                    child: Image.network(
-                      instructor.instructorLogo,
+                    child: CachedNetworkImage(
+                      imageUrl: instructor.instructorLogo,
                       fit: BoxFit.cover,
                     ),
                   ),

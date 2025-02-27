@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project/New%20cours%20catecore/model/model_cours.dart';
 
@@ -20,7 +21,8 @@ class CourseScreen extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: ListView.separated(
           itemCount: courses.length,
-          separatorBuilder: (context, index) => SizedBox(height: 12), // مسافة بين الكروت
+          separatorBuilder: (context, index) =>
+              SizedBox(height: 12), // مسافة بين الكروت
           itemBuilder: (context, index) {
             final course = courses[index];
 
@@ -30,7 +32,8 @@ class CourseScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DetailsScreenCours(title: course.name),
+                    builder: (context) =>
+                        DetailsScreenCours(title: course.name),
                   ),
                 );
               },
@@ -40,8 +43,8 @@ class CourseScreen extends StatelessWidget {
                 child: Stack(
                   children: [
                     // ✅ الصورة تأخذ كامل الكارد
-                    Image.network(
-                      course.logo,
+                    CachedNetworkImage(
+                      imageUrl: course.logo,
                       width: double.infinity,
                       height: 200,
                       fit: BoxFit.cover,
@@ -84,7 +87,9 @@ class CourseScreen extends StatelessWidget {
                             course.about,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(color: const Color.fromARGB(255, 247, 241, 241), fontSize: 14),
+                            style: TextStyle(
+                                color: const Color.fromARGB(255, 247, 241, 241),
+                                fontSize: 14),
                           ),
                           SizedBox(height: 6),
                           Row(
@@ -92,7 +97,10 @@ class CourseScreen extends StatelessWidget {
                             children: [
                               Text(
                                 '⭐ ${course.ratings}',
-                                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white),
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
                               ),
                               Text(
                                 course.price,

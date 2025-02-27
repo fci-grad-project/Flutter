@@ -21,66 +21,65 @@ class HomeBodyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.white,
       drawer: Drawer(child: CustomSidebar(controller: _sidebarController)),
-
+    
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 25), // توحيد الهوامش الجانبية
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   /// **👤 Header (صورة المستخدم + الاسم + القائمة الجانبية)**
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Builder(
-                        builder: (context) => IconButton(
-                          icon: Icon(Icons.menu,
-                              color: AppColors.primaryColor, size: 30),
-                          onPressed: () => Scaffold.of(context).openDrawer(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Builder(
+                          builder: (context) => IconButton(
+                            icon: Icon(Icons.menu,
+                                color: AppColors.primaryColor, size: 30),
+                            onPressed: () => Scaffold.of(context).openDrawer(),
+                          ),
                         ),
-                      ),
-                      RichText(
-                        text: TextSpan(
-                          style: GoogleFonts.cairo(
-                              fontSize: 25, fontWeight: FontWeight.bold),
-                          children: [
-                            TextSpan(
-                                text: "Hi, ",
-                                style: TextStyle(color: Colors.black)),
-                            TextSpan(
-                                text: "Ahmed",
-                                style:
-                                    TextStyle(color: AppColors.primaryColor)),
-                          ],
+                        RichText(
+                          text: TextSpan(
+                            style: GoogleFonts.cairo(
+                                fontSize: 25, fontWeight: FontWeight.bold),
+                            children: [
+                              TextSpan(
+                                  text: "Hi, ",
+                                  style: TextStyle(color: Colors.black)),
+                              TextSpan(
+                                  text: "Ahmed",
+                                  style:
+                                      TextStyle(color: AppColors.primaryColor)),
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            // BoxShadow(color: Colors.grey.withOpacity(0.3), blurRadius: 6, offset: Offset(2, 2)),
-                          ],
-                        ),
-                        child: ClipOval(
+                        ClipOval(
                           child: SizedBox(
                             width: 50,
                             height: 50,
                             child: PhotoUserHome(),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
+
+                  /// **🔎 شريط البحث**
                   CustomSearch(),
-                  const SizedBox(height: 5),
+                  const SizedBox(height: 12),
+
+                  /// **🔥 Hero Section**
                   HeroSection(),
-                  const SizedBox(height: 5),
+                  const SizedBox(height: 10),
+
+                  /// **🚀 التصنيفات**
                   Text(
                     'Courses Categories',
                     style: GoogleFonts.cairo(
@@ -88,29 +87,33 @@ class HomeBodyView extends StatelessWidget {
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 12),
-                  CourseCategories(),
-
                   const SizedBox(height: 10),
+                  CourseCategories(),
+                  const SizedBox(height: 5),
+
+                  /// **📚 الكورسات الجديدة**
                   _buildSectionHeader(
                     context,
                     title: "The New Courses",
                     onViewAll: () =>
                         Navigator.pushNamed(context, AppRoutes.newCourse),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 2),
                   NewCourses(),
+                  const SizedBox(height: 5),
 
-                  const SizedBox(height: 8),
+                  /// **👨‍🏫 المدربين**
                   _buildSectionHeader(
                     context,
                     title: "Instructors",
                     onViewAll: () =>
                         Navigator.pushNamed(context, AppRoutes.instractour),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 5),
                   InstructorsList(),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 2),
+
+                  /// **🎬 الفعاليات المباشرة**
                   Text(
                     'Live Events',
                     style: GoogleFonts.cairo(
@@ -118,7 +121,7 @@ class HomeBodyView extends StatelessWidget {
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 5),
                   LiveEventsList(),
                 ],
               ),

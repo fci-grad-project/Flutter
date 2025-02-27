@@ -92,7 +92,7 @@ class CustomSidebar extends StatelessWidget {
             SidebarItem(
               icon: Iconsax.clipboard_text,
               label: 'Assignments',
-              onTap: () => Navigator.pushNamed(context, AppRoutes.examsView),
+              onTap: () => Navigator.pushNamed(context, AppRoutes.tasksScreen),
             ),
             _buildDivider(),
             SidebarItem(icon: Iconsax.setting, label: 'Settings', onTap: () {}),
