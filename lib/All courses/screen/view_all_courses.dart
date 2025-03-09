@@ -5,6 +5,8 @@ import 'package:graduation_project/New%20cours%20catecore/model/model_cours.dart
 import 'package:graduation_project/core/utils/app_colors.dart';
 
 class CoursesAll extends StatelessWidget {
+  const CoursesAll({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +38,8 @@ class CoursesAll extends StatelessWidget {
 
 /// **قائمة الكورسات (Courses List)**
 class CoursesList extends StatelessWidget {
+  const CoursesList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(

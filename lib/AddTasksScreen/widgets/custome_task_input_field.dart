@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 class TaskInputField extends StatelessWidget {
   final TextEditingController _taskController = TextEditingController();
 
+  TaskInputField({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(

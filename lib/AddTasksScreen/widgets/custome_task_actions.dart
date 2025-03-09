@@ -4,6 +4,8 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:provider/provider.dart';
 
 class TaskActions extends StatelessWidget {
+  const TaskActions({super.key});
+
   @override
   Widget build(BuildContext context) {
     final tasksProvider = Provider.of<TasksProvider>(context);

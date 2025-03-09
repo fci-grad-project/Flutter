@@ -3,6 +3,8 @@ import 'package:graduation_project/AddTasksScreen/model/task_provider.dart';
 import 'package:provider/provider.dart';
 
 class TaskList extends StatelessWidget {
+  const TaskList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Consumer<TasksProvider>(

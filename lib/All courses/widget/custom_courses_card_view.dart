@@ -8,7 +8,7 @@ import 'package:graduation_project/core/utils/app_colors.dart';
 class CourseCard extends StatelessWidget {
   final ModelCourse course;
 
-  CourseCard({
+  const CourseCard({super.key, 
     required this.course,
   });
 
@@ -140,7 +140,7 @@ class CourseCard extends StatelessWidget {
                     ),
                     SizedBox(height: 16),
                     // زر عرض التفاصيل
-                    Container(
+                    SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {

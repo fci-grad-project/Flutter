@@ -8,7 +8,7 @@ import 'package:graduation_project/core/widgets/custom_button.dart';
 class CourseDetailsPage extends StatelessWidget {
   final ModelCourse course;
 
-  CourseDetailsPage({required this.course});
+  const CourseDetailsPage({super.key, required this.course});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class CourseDetailsPage extends StatelessWidget {
                       title: Text(lecture.lectureTitle),
                       subtitle: Text(lecture.lectureDuration),
                     ))
-                .toList(),
+                ,
             SizedBox(height: 16),
             // التسجيلات
             Text(
@@ -65,7 +65,7 @@ class CourseDetailsPage extends StatelessWidget {
                       title: Text(record.professor),
                       subtitle: Text(record.recordsDuration),
                     ))
-                .toList(),
+                ,
             CustomButton(
               onPressed: () {
                 Navigator.pushNamed(context, AppRoutes.detailsScreenCours);

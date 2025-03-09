@@ -10,9 +10,11 @@ class HeroSection extends StatelessWidget {
     'assets/images/poster4.png',
   ];
 
+   HeroSection({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 180, // 🔹 تقليل الارتفاع ليكون متناسقًا مع شاشة الهوم
       child: Stack(
         children: [

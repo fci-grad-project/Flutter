@@ -7,6 +7,8 @@ import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:provider/provider.dart';
 
 class TasksScreen extends StatelessWidget {
+  const TasksScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final tasksProvider = Provider.of<TasksProvider>(context);
