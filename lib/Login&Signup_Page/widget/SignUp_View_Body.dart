@@ -54,7 +54,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               ),
               const SizedBox(height: 16),
               CustomTextFormFieldPassowrd(
-                onSaved: (value) => _password = value,
+                onSaved: (value) => _password = value, hintText: 'Password',
               ),
               const SizedBox(height: 16),
               // Dropdown لاختيار نوع المستخدم

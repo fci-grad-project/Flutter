@@ -45,7 +45,7 @@ class _LoginBodyDetilesState extends State<LoginBodyDetiles> {
               ),
               const SizedBox(height: 16),
               CustomTextFormFieldPassowrd(
-                onSaved: (value) => _password = value,
+                onSaved: (value) => _password = value, hintText: 'Password',
               ),
               const SizedBox(
                 height: 16,
@@ -58,7 +58,7 @@ class _LoginBodyDetilesState extends State<LoginBodyDetiles> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const ForgetPassoward(),
+                          builder: (context) =>  ForgetPassoward(),
                         ),
                       );
                     },

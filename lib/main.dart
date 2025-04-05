@@ -6,7 +6,6 @@ import 'package:graduation_project/AddTasksScreen/model/task_provider.dart';
 import 'package:graduation_project/core/utils/route.dart';
 import 'package:graduation_project/features/services/git_it_services.dart';
 import 'package:provider/provider.dart';
-
 import 'features/firebase_options.dart';
 
 void main() async {
@@ -41,7 +40,7 @@ class TeachConnect extends StatelessWidget {
         textTheme: GoogleFonts.cairoTextTheme(), // تطبيق الخط على كل النصوص
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.instractourDashboard, // تحديد الصفحة الافتراضية عند تشغيل التطبيق
+      initialRoute: AppRoutes.splashScreen, // تحديد الصفحة الافتراضية عند تشغيل التطبيق
       onGenerateRoute: AppRoutes.generateRoute, // تحديد الـ Routes
     );
   }

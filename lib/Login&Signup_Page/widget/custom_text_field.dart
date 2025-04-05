@@ -4,17 +4,21 @@ import 'package:graduation_project/core/utils/app_text_styles.dart';
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
+    this.controller, // ✅ إضافة الـ controller هنا
     required this.hintText,
     required this.textInputType,
     this.suffixIcon,
     this.onSaved,
+    this.validator, // ✅ إضافة validator حتى يتمكن المستخدم من تمريره
     this.obscureText = false,
   });
 
+  final TextEditingController? controller; // ✅ تعريف المتغير
   final String hintText;
   final TextInputType textInputType;
   final Widget? suffixIcon;
   final void Function(String?)? onSaved;
+  final String? Function(String?)? validator; // ✅ تعريف validator بشكل مرن
   final bool obscureText;
 
   OutlineInputBorder _buildBorder(Color color) {
@@ -30,14 +34,10 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller, // ✅ استخدام الـ controller هنا
       obscureText: obscureText,
       onSaved: onSaved,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return ' Please enter some text';
-        }
-        return null;
-      },
+      validator: validator, // ✅ استخدام validator إذا تم تمريره
       keyboardType: textInputType,
       decoration: InputDecoration(
         suffixIcon: suffixIcon,

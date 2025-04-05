@@ -3,10 +3,12 @@ import 'package:graduation_project/Login&Signup_Page/widget/custom_text_field.da
 
 class CustomTextFormFieldPassowrd extends StatefulWidget {
   const CustomTextFormFieldPassowrd({
+    required this.hintText,
     this.onSaved,
     super.key,
   });
 
+  final String hintText;
   final void Function(String?)? onSaved;
 
   @override
@@ -20,7 +22,7 @@ class _CustomTextFormFieldPassowrdState extends State<CustomTextFormFieldPassowr
     return CustomTextFormField(
       obscureText: obscureText,
       onSaved: widget.onSaved,
-      hintText: 'Password',
+      hintText: widget.hintText,
       textInputType: TextInputType.text,
       suffixIcon: GestureDetector(
         onTap: () {
@@ -31,7 +33,6 @@ class _CustomTextFormFieldPassowrdState extends State<CustomTextFormFieldPassowr
         child: obscureText
             ? const Icon(Icons.visibility_off)
             : const Icon(Icons.visibility),
-
       ),
     );
   }

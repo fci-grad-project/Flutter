@@ -7,8 +7,8 @@ import 'package:graduation_project/Nav%20Bar%20Iteam/nav.dart';
 import 'package:graduation_project/New%20cours%20catecore/screen/new_course_view.dart';
 import 'package:graduation_project/Page%20Instractour/screen/Instractour_Dashboard.dart';
 import 'package:graduation_project/ProfilePage/view_profile.dart';
+import 'package:graduation_project/Splachscreen_Onbording/SplachScreen.dart';
 import 'package:graduation_project/Splachscreen_Onbording/onbording_view.dart';
-import 'package:graduation_project/Splachscreen_Onbording/splach_view.dart';
 import 'package:graduation_project/AddTasksScreen/screen/tasks_screen.dart';
 import 'package:graduation_project/exams/exams_view.dart';
 import 'package:graduation_project/home%20screen/view_home_screen.dart';
@@ -24,14 +24,14 @@ class AppRoutes {
   static const String examsView = '/ExamsView';
   static const String chatView = '/ChatView';
   static const String detailsScreenCours = '/DetailsScreenCours';
-  static const String onbordingView = '/OnbordingView';
-  static const String splachScreenView = '/SplachScreenView';
   static const String profilePage = '/ProfilePage';
   static const String newCourse = '/CourseScreen';
   static const String instractour = '/InstructorsScreen';
   static const String coursesall = '/CoursesAll';
   static const String tasksScreen = '/TasksScreen';
   static const String instractourDashboard = '/InstractourDashboard';
+  static const String onboardingScreen = '/OnboardingScreen';
+  static const String splashScreen = '/SplashScreen';
 
 
   // دالة تقوم بإرجاع الشاشة المطلوبة بناءً على المسار
@@ -50,10 +50,6 @@ class AppRoutes {
       case detailsScreenCours:
         return MaterialPageRoute(
             builder: (_) => DetailsScreenCours(title: 'Flutter Course'));
-      case onbordingView:
-        return MaterialPageRoute(builder: (_) => OnbordingView());
-      case splachScreenView:
-        return MaterialPageRoute(builder: (_) => SplachScreenView());
       case examsView:
         return MaterialPageRoute(builder: (_) => ExamsView());
       case chatView:
@@ -68,6 +64,10 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => TasksScreen());
         case instractourDashboard:
         return MaterialPageRoute(builder: (_) => InstractourDashboard());
+        case onboardingScreen:
+        return MaterialPageRoute(builder: (_) => OnboardingScreen());
+        case splashScreen:
+        return MaterialPageRoute(builder: (_) => SplashScreen());
 
         
 

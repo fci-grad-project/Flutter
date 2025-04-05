@@ -31,6 +31,7 @@ class _InstractourDashboardState extends State<InstractourDashboard>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Instructors Dashboard',
             style: GoogleFonts.cairo(
@@ -45,12 +46,10 @@ class _InstractourDashboardState extends State<InstractourDashboard>
           labelColor: Colors.white, // لون النص عند التحديد
           unselectedLabelColor: Colors.white, // لون النص عند عدم التحديد
           tabs: const [
-            Tab(
-                icon: Icon(Iconsax.book, color: Colors.white),
-                text: 'Courses'),
+            Tab(icon: Icon(Iconsax.book, color: Colors.white), text: 'Courses'),
             Tab(
                 icon: Icon(Iconsax.clipboard_text, color: Colors.white),
-                text: 'Exams'),  
+                text: 'Exams'),
             Tab(
                 icon: Icon(Iconsax.task_square, color: Colors.white),
                 text: 'Homework'),
@@ -72,7 +71,7 @@ class _InstractourDashboardState extends State<InstractourDashboard>
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.instractourColor,
         onPressed: () {},
-        child: Icon(Iconsax.add , color: Colors.white),
+        child: Icon(Iconsax.add, color: Colors.white),
       ),
     );
   }
@@ -89,8 +88,8 @@ class _InstractourDashboardState extends State<InstractourDashboard>
             child: SlideAnimation(
               verticalOffset: 50.0,
               child: FadeInAnimation(
-                child: _buildItemCard(
-                    ' Name of the course', 'Number of Lessons: 4 ', Iconsax.book),
+                child: _buildItemCard('Name of the course',
+                    'Number of Lessons: 4 ', Iconsax.book),
               ),
             ),
           );
@@ -116,8 +115,9 @@ class _InstractourDashboardState extends State<InstractourDashboard>
 
   Widget _buildItemCard(String title, String subtitle, IconData icon) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      elevation: 3,
+      color: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      elevation: 2,
       margin: const EdgeInsets.symmetric(vertical: 10),
       child: ListTile(
         leading: Icon(icon, color: AppColors.instractourColor),
