@@ -6,6 +6,7 @@ import 'package:graduation_project/Login&Signup_Page/SignUpView.dart';
 import 'package:graduation_project/Nav%20Bar%20Iteam/nav.dart';
 import 'package:graduation_project/New%20cours%20catecore/screen/new_course_view.dart';
 import 'package:graduation_project/Page%20Instractour/screen/Instractour_Dashboard.dart';
+// import 'package:graduation_project/Page%20Instractour/screen/InstructorProfilePage.dart';
 import 'package:graduation_project/ProfilePage/view_profile.dart';
 import 'package:graduation_project/Splachscreen_Onbording/SplachScreen.dart';
 import 'package:graduation_project/Splachscreen_Onbording/onbording_view.dart';
@@ -32,6 +33,8 @@ class AppRoutes {
   static const String instractourDashboard = '/InstractourDashboard';
   static const String onboardingScreen = '/OnboardingScreen';
   static const String splashScreen = '/SplashScreen';
+  static const String instructorProfilePage = '/InstructorProfilePage';
+  static const String instructorsScreen = '/InstructorsScreen';
 
 
   // دالة تقوم بإرجاع الشاشة المطلوبة بناءً على المسار
@@ -68,6 +71,10 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => OnboardingScreen());
         case splashScreen:
         return MaterialPageRoute(builder: (_) => SplashScreen());
+        case instructorProfilePage:
+        // return MaterialPageRoute(builder: (_) => InstructorProfilePage(instructor: getSelectedInstructor()));
+        case instructorsScreen:
+        return MaterialPageRoute(builder: (_) => InstructorsScreen());
 
         
 

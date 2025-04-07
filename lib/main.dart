@@ -40,7 +40,7 @@ class TeachConnect extends StatelessWidget {
         textTheme: GoogleFonts.cairoTextTheme(), // تطبيق الخط على كل النصوص
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.splashScreen, // تحديد الصفحة الافتراضية عند تشغيل التطبيق
+      initialRoute: AppRoutes.instructorsScreen, // تحديد الصفحة الافتراضية عند تشغيل التطبيق
       onGenerateRoute: AppRoutes.generateRoute, // تحديد الـ Routes
     );
   }
