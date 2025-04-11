@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:graduation_project/Login&Signup_Page/SignUpView.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_text_styles.dart';
@@ -31,12 +30,12 @@ class DontHaveAnAccountWidget extends StatelessWidget {
           TextSpan(
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SignUp_View(),
-                  ),
-                );
+                // Navigator.push(
+                //   context
+                //   // MaterialPageRoute(
+                //   //   // builder: (context) => const SignUp_View(),
+                //   // ),
+                // );
               },
             text: 'Sign Up',
             style:

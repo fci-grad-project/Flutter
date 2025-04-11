@@ -47,7 +47,7 @@ class AppRoutes {
       case profilePage:
         return MaterialPageRoute(builder: (_) => ProfilePage());
       case signup:
-        return MaterialPageRoute(builder: (_) => SignUp_View());
+        // return MaterialPageRoute(builder: (_) => SignUp_View());
       case navBar:
         return MaterialPageRoute(builder: (_) => NavBar());
       case detailsScreenCours:

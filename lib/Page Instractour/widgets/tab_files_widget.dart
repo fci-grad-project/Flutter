@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'file_card_widget.dart';
 import 'package:file_picker/file_picker.dart';
 
 class TabFilesWidget extends StatelessWidget {
@@ -26,7 +25,7 @@ class TabFilesWidget extends StatelessWidget {
       itemCount: files.length,
       itemBuilder: (context, index) {
         final file = files[index];
-        return FileCardWidget(file: file, onTap: () => onFileTap(file));
+        // return FileCardWidget(file: file, onTap: () => onFileTap(file));
       },
     );
   }
