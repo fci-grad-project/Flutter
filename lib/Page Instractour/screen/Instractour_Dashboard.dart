@@ -5,14 +5,14 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
-class InstractourDashboard extends StatefulWidget {
-  const InstractourDashboard({super.key});
+class ProfDashboard extends StatefulWidget {
+  const ProfDashboard({super.key});
 
   @override
-  _InstractourDashboardState createState() => _InstractourDashboardState();
+  _ProfDashboardState createState() => _ProfDashboardState();
 }
 
-class _InstractourDashboardState extends State<InstractourDashboard>
+class _ProfDashboardState extends State<ProfDashboard>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
