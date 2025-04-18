@@ -16,6 +16,8 @@ void main() {
             create: (context) => TasksProvider()), // ✅ إضافة مزود المهام
         ChangeNotifierProvider(
             create: (context) => LoginController()), // مزود الـ Login
+        // ChangeNotifierProvider(
+        //     create: (context) => SignupController(context)), // ✅ إضافة مزود التسجيل
       ],
       child: const TeachConnect(),
     ),
@@ -36,7 +38,7 @@ class TeachConnect extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       initialRoute:
-          AppRoutes.login, // تحديد الصفحة الافتراضية عند تشغيل التطبيق
+          AppRoutes.homeScreenAiTech, // تحديد الصفحة الافتراضية عند تشغيل التطبيق
       onGenerateRoute: AppRoutes.generateRoute, // تحديد الـ Routes
     );
   }

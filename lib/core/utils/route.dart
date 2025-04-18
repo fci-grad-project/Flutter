@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/Ai%20Tech/screen/home_screen_AI.dart';
 import 'package:graduation_project/All%20courses/screen/view_all_courses.dart';
 import 'package:graduation_project/Contact%20Room/chat_view.dart';
 import 'package:graduation_project/Login&Signup_Page/LoginView.dart';
+import 'package:graduation_project/Login&Signup_Page/SignUpView.dart';
 import 'package:graduation_project/Nav%20Bar%20Iteam/nav.dart';
 import 'package:graduation_project/New%20cours%20catecore/screen/new_course_view.dart';
 import 'package:graduation_project/Page%20Instractour/screen/Instractour_Dashboard.dart';
@@ -33,6 +35,7 @@ class AppRoutes {
   static const String splashScreen = '/SplashScreen';
   static const String instructorProfilePage = '/InstructorProfilePage';
   static const String instructorsScreen = '/InstructorsScreen';
+  static const String homeScreenAiTech = '/HomeScreenAiTech';
 
 
   // دالة تقوم بإرجاع الشاشة المطلوبة بناءً على المسار
@@ -45,7 +48,7 @@ class AppRoutes {
       case profilePage:
         return MaterialPageRoute(builder: (_) => ProfilePage());
       case signup:
-        // return MaterialPageRoute(builder: (_) => SignUp_View());
+        return MaterialPageRoute(builder: (_) => SignUp_View());
       case navBar:
         return MaterialPageRoute(builder: (_) => NavBar());
       case detailsScreenCours:
@@ -71,6 +74,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => SplashScreen());
         case instructorsScreen:
         return MaterialPageRoute(builder: (_) => InstructorsScreen());
+        case homeScreenAiTech:
+        return MaterialPageRoute(builder: (_) => HomeScreenAiTech());
 
         
 

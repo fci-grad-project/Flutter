@@ -9,18 +9,9 @@ class SignUp_View extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context, title: ' Sign Up'),
-      body: SignupBodyBlocConsumer(),
+      body: SignUpViewBody()
     );
   }
 }
 
-class SignupBodyBlocConsumer extends StatelessWidget {
-  const SignupBodyBlocConsumer({
-    super.key,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return SignUpViewBody();
-  }
-}

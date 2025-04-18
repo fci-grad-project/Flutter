@@ -4,23 +4,28 @@ import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:image_picker/image_picker.dart';
 
 class PickImageWidget extends StatefulWidget {
-  const PickImageWidget({super.key});
+  final Function(File?) onImagePicked; // ✅ callback علشان نرجع الصورة
+
+  const PickImageWidget({
+    super.key,
+    required this.onImagePicked,
+  });
 
   @override
   State<PickImageWidget> createState() => _PickImageWidgetState();
 }
 
 class _PickImageWidgetState extends State<PickImageWidget> {
-  File? _profilePic; // الصورة المختارة
+  File? _profilePic;
 
   Future<void> _pickImage() async {
-    final pickedFile =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
+    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
       setState(() {
-        _profilePic = File(pickedFile.path); // تحديث الصورة المختارة
+        _profilePic = File(pickedFile.path);
       });
+      widget.onImagePicked(_profilePic); // ✅ استدعاء الـ callback
     }
   }
 
@@ -31,8 +36,7 @@ class _PickImageWidgetState extends State<PickImageWidget> {
       height: 130,
       child: _profilePic == null
           ? CircleAvatar(
-              backgroundColor:AppColors.primaryColor,
-// لون الخلفية
+              backgroundColor: AppColors.primaryColor,
               child: Stack(
                 children: [
                   Center(child: Image.asset('assets/images/student.png')),
@@ -40,7 +44,7 @@ class _PickImageWidgetState extends State<PickImageWidget> {
                     bottom: 5,
                     right: 5,
                     child: GestureDetector(
-                      onTap: _pickImage, // اختيار الصورة عند النقر
+                      onTap: _pickImage,
                       child: Container(
                         height: 50,
                         width: 50,
@@ -61,7 +65,7 @@ class _PickImageWidgetState extends State<PickImageWidget> {
               ),
             )
           : CircleAvatar(
-              backgroundImage: FileImage(_profilePic!), // عرض الصورة المختارة
+              backgroundImage: FileImage(_profilePic!),
             ),
     );
   }
