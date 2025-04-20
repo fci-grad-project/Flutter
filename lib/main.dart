@@ -41,7 +41,7 @@ class TeachConnect extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes
-          .homeScreenAiTech, // تحديد الصفحة الافتراضية عند تشغيل التطبيق
+          .navBar, // تحديد الصفحة الافتراضية عند تشغيل التطبيق
       onGenerateRoute: AppRoutes.generateRoute, // تحديد الـ Routes
     );
   }

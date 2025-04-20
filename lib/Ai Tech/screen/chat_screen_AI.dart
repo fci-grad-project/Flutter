@@ -20,6 +20,9 @@ class _ChatScreenAIState extends State<ChatScreenAI> {
   bool _isListening = false;
   bool _isLoading = false;
 
+  final chat_types.User user = chat_types.User(id: 'user');
+  final chat_types.User bot = chat_types.User(id: 'bot');
+
   void _sendMessage() async {
     if (_controller.text.isEmpty) return;
 
@@ -27,7 +30,7 @@ class _ChatScreenAIState extends State<ChatScreenAI> {
 
     final userMessage = _controller.text;
     final userChatMessage = chat_types.TextMessage(
-      author: chat_types.User(id: 'user'),
+      author: user,
       id: Uuid().v4(),
       text: userMessage,
       createdAt: DateTime.now().millisecondsSinceEpoch,
@@ -41,7 +44,7 @@ class _ChatScreenAIState extends State<ChatScreenAI> {
 
     final response = await ApiService().sendMessage(userMessage, 'Gemini');
     final botChatMessage = chat_types.TextMessage(
-      author: chat_types.User(id: 'bot'),
+      author: bot,
       id: Uuid().v4(),
       text: response,
       createdAt: DateTime.now().millisecondsSinceEpoch,
@@ -58,7 +61,7 @@ class _ChatScreenAIState extends State<ChatScreenAI> {
     if (result != null && result.files.single.path != null) {
       final file = File(result.files.single.path!);
       final fileMessage = chat_types.FileMessage(
-        author: chat_types.User(id: 'user'),
+        author: user,
         id: Uuid().v4(),
         name: result.files.single.name,
         size: result.files.single.size,
@@ -124,7 +127,6 @@ class _ChatScreenAIState extends State<ChatScreenAI> {
       drawer: Drawer(
         backgroundColor: Colors.teal,
         child: ListView(
-          // padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(color: Colors.teal),
@@ -177,11 +179,11 @@ class _ChatScreenAIState extends State<ChatScreenAI> {
         children: [
           Chat(
             messages: _chatMessages,
-            user: chat_types.User(id: 'user'),
             onSendPressed: (chat_types.PartialText message) {
               _controller.text = message.text;
               _sendMessage();
             },
+            user: user,
             theme: DefaultChatTheme(
               primaryColor: Colors.teal,
               secondaryColor: Colors.grey[300]!,
@@ -226,12 +228,30 @@ class _ChatScreenAIState extends State<ChatScreenAI> {
                 ],
               ),
             ),
-            showUserAvatars: false,
+            showUserAvatars: true,
             showUserNames: false,
 
-            /// 👇 تضيف دي علشان تشيل "No messages here yet"
+            // ✅ عرض صور المستخدمين حسب الـ ID
+            avatarBuilder: (userData) {
+              if (userData.id == 'user') {
+                return CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/student.png'),
+                );
+              } else if (userData.id == 'bot') {
+                return CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/robotlearn.png'),
+                );
+              } else {
+                return const CircleAvatar(
+                  child: Icon(Icons.person),
+                );
+              }
+            },
+
+            // ✅ إخفاء النص "No messages here yet"
             emptyState: SizedBox.shrink(),
           ),
+
           if (_chatMessages.isEmpty)
             Positioned.fill(
               child: Center(
@@ -255,6 +275,7 @@ class _ChatScreenAIState extends State<ChatScreenAI> {
                 ),
               ),
             ),
+
           if (_isLoading)
             const Positioned(
               bottom: 16,

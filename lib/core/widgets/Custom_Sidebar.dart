@@ -108,20 +108,50 @@ class CustomSidebar extends StatelessWidget {
               textColor: Colors.red,
             ),
             _buildDivider(),
-              SidebarItem(
-              icon: Iconsax.message_programming,
-              label: 'AskMaster',
-              onTap: () => _navigateTo(context, HomeScreenAiTech()),
-              iconColor: Colors.green,
-              textColor: Colors.green,
-            ),          
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 50 , top: 30),
+                  child: Image.asset(
+                    'assets/images/robotlearn.png',
+                    width: 70,
+                    height: 60,
+                  ),
+                ),
+                // SizedBox(width: 5),
+                InkWell(
+                  onTap: () => _navigateTo(context, HomeScreenAiTech()),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 30),
+                    child: Row(
+                      children: [
+                        Text(
+                          'AskMaster ',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green,
+                          ),
+                        ),
+                        Text(
+                          'AI',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
     );
-  }
-  Widget _buildDivider() {
-    return Padding(
+  }  Widget _buildDivider() {    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Divider(color: Colors.grey.shade300, thickness: 1),
     );
