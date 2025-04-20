@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:graduation_project/Ai%20Tech/model/chat_provider.dart';
 import 'package:graduation_project/Contact%20Room/chats/chat_controller.dart';
 import 'package:graduation_project/AddTasksScreen/model/task_provider.dart';
 import 'package:graduation_project/Login&Signup_Page/server/auth/login_control.dart';
@@ -18,6 +19,8 @@ void main() {
             create: (context) => LoginController()), // مزود الـ Login
         // ChangeNotifierProvider(
         //     create: (context) => SignupController(context)), // ✅ إضافة مزود التسجيل
+        ChangeNotifierProvider(
+          create: (context) => ChatProvider()), // مزود الدردشة
       ],
       child: const TeachConnect(),
     ),
@@ -37,8 +40,8 @@ class TeachConnect extends StatelessWidget {
         textTheme: GoogleFonts.cairoTextTheme(), // تطبيق الخط على كل النصوص
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute:
-          AppRoutes.homeScreenAiTech, // تحديد الصفحة الافتراضية عند تشغيل التطبيق
+      initialRoute: AppRoutes
+          .homeScreenAiTech, // تحديد الصفحة الافتراضية عند تشغيل التطبيق
       onGenerateRoute: AppRoutes.generateRoute, // تحديد الـ Routes
     );
   }

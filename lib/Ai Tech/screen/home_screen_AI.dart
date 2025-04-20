@@ -6,7 +6,7 @@ import 'package:graduation_project/Ai%20Tech/widgets/Suggetion_Box.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
 
 class HomeScreenAiTech extends StatefulWidget {
-  static const String routeName = 'home';
+  static const String routeName = 'NavBar';
   const HomeScreenAiTech({super.key});
 
   @override
@@ -30,6 +30,7 @@ class _HomeScreenAiTechState extends State<HomeScreenAiTech> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
+
           backgroundColor: Colors.transparent,
           title: const Row(
             mainAxisSize: MainAxisSize.min,
@@ -171,7 +172,7 @@ class _HomeScreenAiTechState extends State<HomeScreenAiTech> {
             onPressed: () async {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const ChatScreenAI()),
+                MaterialPageRoute(builder: (context) =>  ChatScreenAI()),
               );
             },
             

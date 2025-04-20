@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/Ai%20Tech/screen/home_screen_AI.dart';
 import 'package:graduation_project/Login&Signup_Page/LoginView.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
 import 'package:graduation_project/core/utils/route.dart';
@@ -107,12 +108,18 @@ class CustomSidebar extends StatelessWidget {
               textColor: Colors.red,
             ),
             _buildDivider(),
+              SidebarItem(
+              icon: Iconsax.message_programming,
+              label: 'AskMaster',
+              onTap: () => _navigateTo(context, HomeScreenAiTech()),
+              iconColor: Colors.green,
+              textColor: Colors.green,
+            ),          
           ],
         ),
       ),
     );
   }
-
   Widget _buildDivider() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),

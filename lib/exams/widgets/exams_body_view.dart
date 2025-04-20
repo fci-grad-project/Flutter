@@ -8,9 +8,9 @@ class ExamsBodyView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column (
       children: [
-        Expanded( // يجعل ExamsPage يأخذ كل المساحة المتاحة بشكل مرن
-          child: ExamsPage(),
-        ),
+        // Expanded( // يجعل ExamsPage يأخذ كل المساحة المتاحة بشكل مرن
+        //   // child: ExamsPage(),
+        // ),
       ],
     );
   }
