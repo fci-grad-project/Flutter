@@ -1,11 +1,9 @@
-import 'dart:io';
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_types/flutter_chat_types.dart' as chat_types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
-import 'package:graduation_project/Ai%20Tech/model/Uuid.dart';
-import 'package:graduation_project/Ai%20Tech/model/api_serves.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:speech_to_text/speech_to_text.dart' as stt;
+import 'package:graduation_project/Ai%20Tech/model/chat_service.dart';
+import 'package:graduation_project/Ai%20Tech/widgets/chat_avatar_builder.dart';
+import 'package:graduation_project/Ai%20Tech/widgets/chat_input_bar.dart';
 
 class ChatScreenAI extends StatefulWidget {
   @override
@@ -13,278 +11,119 @@ class ChatScreenAI extends StatefulWidget {
 }
 
 class _ChatScreenAIState extends State<ChatScreenAI> {
-  final TextEditingController _controller = TextEditingController();
-  final List<chat_types.Message> _chatMessages = [];
-  final List<List<chat_types.Message>> _chatHistory = [];
-  final stt.SpeechToText _speech = stt.SpeechToText();
-  bool _isListening = false;
-  bool _isLoading = false;
-
-  final chat_types.User user = chat_types.User(id: 'user');
-  final chat_types.User bot = chat_types.User(id: 'bot');
-
-  void _sendMessage() async {
-    if (_controller.text.isEmpty) return;
-
-    setState(() => _isLoading = true);
-
-    final userMessage = _controller.text;
-    final userChatMessage = chat_types.TextMessage(
-      author: user,
-      id: Uuid().v4(),
-      text: userMessage,
-      createdAt: DateTime.now().millisecondsSinceEpoch,
-    );
-
-    setState(() {
-      _chatMessages.insert(0, userChatMessage);
-    });
-
-    _controller.clear();
-
-    final response = await ApiService().sendMessage(userMessage, 'Gemini');
-    final botChatMessage = chat_types.TextMessage(
-      author: bot,
-      id: Uuid().v4(),
-      text: response,
-      createdAt: DateTime.now().millisecondsSinceEpoch,
-    );
-
-    setState(() {
-      _chatMessages.insert(0, botChatMessage);
-      _isLoading = false;
-    });
-  }
-
-  void _pickFile() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
-    if (result != null && result.files.single.path != null) {
-      final file = File(result.files.single.path!);
-      final fileMessage = chat_types.FileMessage(
-        author: user,
-        id: Uuid().v4(),
-        name: result.files.single.name,
-        size: result.files.single.size,
-        uri: file.path,
-        createdAt: DateTime.now().millisecondsSinceEpoch,
-      );
-
-      setState(() {
-        _chatMessages.insert(0, fileMessage);
-      });
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('File added to chat.')),
-      );
-    }
-  }
-
-  void _listen() async {
-    if (!_isListening) {
-      bool available = await _speech.initialize();
-      if (available) {
-        setState(() => _isListening = true);
-        _speech.listen(
-          onResult: (val) {
-            setState(() {
-              _controller.text = val.recognizedWords;
-            });
-          },
-        );
-      }
-    } else {
-      setState(() => _isListening = false);
-      _speech.stop();
-    }
-  }
+  final ChatService _chatService = ChatService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.white),
-        title: Row(
-          children: [
-            Text(
-              "Ask",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-              ),
-            ),
-            Text(
-              "Master",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-              ),
-            ),
-          ],
-        ),
-        backgroundColor: Colors.teal,
-      ),
-      drawer: Drawer(
-        backgroundColor: Colors.teal,
-        child: ListView(
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.teal),
-              child: Text(
-                'Chat History',
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.add),
-              title: const Text('New Chat'),
-              onTap: () {
-                if (_chatMessages.isNotEmpty) {
-                  _chatHistory.add(List.from(_chatMessages));
-                }
-                setState(() => _chatMessages.clear());
-                Navigator.pop(context);
-              },
-            ),
-            if (_chatHistory.isEmpty)
-              const ListTile(
-                title: Text('No History chats'),
-                enabled: false,
-              ),
-            ..._chatHistory.asMap().entries.map((entry) {
-              int index = entry.key;
-              List<chat_types.Message> chat = entry.value;
-              return ListTile(
-                title: Text('Chat ${index + 1}'),
-                subtitle: Text(
-                  chat.isNotEmpty && chat.last is chat_types.TextMessage
-                      ? (chat.last as chat_types.TextMessage).text
-                      : 'Media/Empty chat',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                onTap: () {
-                  setState(() {
-                    _chatMessages.clear();
-                    _chatMessages.addAll(chat.reversed);
-                  });
-                  Navigator.pop(context);
-                },
-              );
-            }).toList(),
-          ],
-        ),
-      ),
+      appBar: _buildAppBar(),
+      drawer: _buildDrawer(),
       body: Stack(
         children: [
           Chat(
-            messages: _chatMessages,
-            onSendPressed: (chat_types.PartialText message) {
-              _controller.text = message.text;
-              _sendMessage();
-            },
-            user: user,
-            theme: DefaultChatTheme(
-              primaryColor: Colors.teal,
-              secondaryColor: Colors.grey[300]!,
-              inputBackgroundColor: Colors.teal[50]!,
-              inputTextColor: Colors.black,
-              inputBorderRadius: BorderRadius.circular(20),
-              messageBorderRadius: 15,
-            ),
-            customBottomWidget: Container(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Row(
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      _isListening ? Icons.mic_off : Icons.mic,
-                      color: Colors.teal,
-                    ),
-                    onPressed: _listen,
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.attach_file, color: Colors.teal),
-                    onPressed: _pickFile,
-                  ),
-                  Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.teal[50],
-                        hintText: 'Type a Message',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                      onSubmitted: (_) => _sendMessage(),
-                    ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.send, color: Colors.teal),
-                    onPressed: _sendMessage,
-                  ),
-                ],
-              ),
-            ),
+            messages: _chatService.chatMessages,
+            onSendPressed: (message) =>
+                _chatService.handleSendMessage(message, setState),
+            user: _chatService.user,
+            theme: _chatService.chatTheme,
+            customBottomWidget: ChatInputBar(
+                chatService: _chatService, setStateCallback: setState),
+            avatarBuilder: buildAvatar,
             showUserAvatars: true,
             showUserNames: false,
-
-            // ✅ عرض صور المستخدمين حسب الـ ID
-            avatarBuilder: (userData) {
-              if (userData.id == 'user') {
-                return CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/student.png'),
-                );
-              } else if (userData.id == 'bot') {
-                return CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/robotlearn.png'),
-                );
-              } else {
-                return const CircleAvatar(
-                  child: Icon(Icons.person),
-                );
-              }
-            },
-
-            // ✅ إخفاء النص "No messages here yet"
-            emptyState: SizedBox.shrink(),
+            emptyState: const SizedBox.shrink(),
           ),
-
-          if (_chatMessages.isEmpty)
-            Positioned.fill(
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/robotlearn.png',
-                      height: 150,
-                      width: 150,
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      'Welcome to Ask Master',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.teal,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-          if (_isLoading)
+          if (_chatService.chatMessages.isEmpty) _buildWelcome(),
+          if (_chatService.isLoading)
             const Positioned(
               bottom: 16,
               left: 0,
               right: 0,
-              child: Center(
-                child: CircularProgressIndicator(color: Colors.teal),
+              child:
+                  Center(child: CircularProgressIndicator(color: Colors.teal)),
+            ),
+        ],
+      ),
+    );
+  }
+
+  AppBar _buildAppBar() {
+    return AppBar(
+      iconTheme: const IconThemeData(color: Colors.teal),
+      centerTitle: true, // ✅ دي اللي هتخلي العنوان ف النص
+      title: TitleChatAI(),
+      backgroundColor: Colors.teal[50],
+      elevation: 0,
+    );
+  }
+
+  Widget _buildDrawer() {
+    return Drawer(
+      backgroundColor: Colors.teal,
+      child: ListView(
+        children: [
+          const DrawerHeader(
+            decoration: BoxDecoration(color: Colors.teal),
+            child: Text('Chat History',
+                style: TextStyle(color: Colors.white, fontSize: 24)),
+          ),
+          ListTile(
+            leading: const Icon(Icons.add),
+            title: const Text('New Chat'),
+            onTap: () => _chatService.createNewChat(setState),
+          ),
+          if (_chatService.chatHistory.isEmpty)
+            const ListTile(title: Text('No History chats'), enabled: false),
+          ..._chatService.buildChatHistoryListTiles(setState),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildWelcome() {
+    return Positioned.fill(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            BounceInDown(
+              child: Image.asset('assets/images/robotlearn.png',
+                  height: 150, width: 150),
+            ),
+            // const SizedBox(height: 8),
+            FadeInUp(
+              delay: const Duration(milliseconds: 200),
+              child: const Text(
+                'Welcome to AskMaster',
+                style: TextStyle(fontSize: 20, color: Colors.teal),
               ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+class TitleChatAI extends StatelessWidget {
+  const TitleChatAI({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text.rich(
+      TextSpan(
+        children: [
+          TextSpan(
+            text: "Ask",
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 25, color: Colors.black),
+          ),
+          TextSpan(
+            text: "Master",
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 25, color: Colors.teal),
+          ),
         ],
       ),
     );
