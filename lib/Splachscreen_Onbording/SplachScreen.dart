@@ -53,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     child: child,
                   );
                 },
-                child: Image.asset('assets/images/TEACH CONNECT LOGO .png', height: 150),
+                child: Image.asset('assets/images/logoupdate.png', height: 150),
               ),
             ),
           ],

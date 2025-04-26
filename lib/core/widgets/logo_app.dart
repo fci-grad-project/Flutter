@@ -8,9 +8,9 @@ class LogoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      'assets/images/TEACH CONNECT LOGO .png',
-      width: 300,  
-      height: 200,
+      'assets/images/logoupdate.png',
+      width: 250,  
+      height: 180,
     );
   }
 }
