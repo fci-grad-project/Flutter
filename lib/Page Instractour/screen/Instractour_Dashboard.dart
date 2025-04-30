@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:graduation_project/core/utils/app_colors.dart';
+import 'package:graduation_project/newassiment/screen/NewAssiment.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -70,7 +71,12 @@ class _ProfDashboardState extends State<ProfDashboard>
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.instractourColor,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) =>  NewAssignmentPage()),
+          );
+        },
         child: Icon(Iconsax.add, color: Colors.white),
       ),
     );

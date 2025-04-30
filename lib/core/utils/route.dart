@@ -15,6 +15,7 @@ import 'package:graduation_project/exams/exams_view.dart';
 import 'package:graduation_project/home%20screen/view_home_screen.dart';
 import 'package:graduation_project/detaills%20cours/screen/details_screen.dart';
 import 'package:graduation_project/instractour/screen/instractour_view.dart';
+import 'package:graduation_project/newassiment/screen/NewAssiment.dart';
 
 class AppRoutes {
   // تعريف المسارات كـ متغيرات ثابتة
@@ -36,6 +37,7 @@ class AppRoutes {
   static const String instructorProfilePage = '/InstructorProfilePage';
   static const String instructorsScreen = '/InstructorsScreen';
   static const String homeScreenAiTech = '/HomeScreenAiTech';
+  static const String newAssignmentPage = '/NewAssignmentPage';
 
 
   // دالة تقوم بإرجاع الشاشة المطلوبة بناءً على المسار
@@ -76,6 +78,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => InstructorsScreen());
         case homeScreenAiTech:
         return MaterialPageRoute(builder: (_) => HomeScreenAiTech());
+        case newAssignmentPage:
+        return MaterialPageRoute(builder: (_) => NewAssignmentPage());
 
         
 
